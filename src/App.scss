@@ -1,0 +1,73 @@
+@import "./scss/variables";
+@import "./components/navbar/navbar";
+@import "./pages/home/home";
+@import "./pages/movies/movies";
+@import "./pages/tv-series/tv-series";
+@import "./components/trending/trending";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  // min-height: 100vh;
+  min-height: 300vh;
+  font-family: "Poppins", sans-serif;
+  background-color: $primary;
+  position: relative;
+  user-select: none;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to bottom, $secondary, $secondary-1);
+    opacity: 0.5;
+    border-radius: 100rem;
+  }
+}
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+button,
+a {
+  cursor: pointer;
+  display: inline-block;
+}
+a {
+  text-decoration: none;
+}
+.text {
+  font-weight: 500;
+  &-big {
+    font-size: 35px;
+    color: #fff;
+  }
+  &-normal {
+    font-size: 25px;
+    color: #fff;
+  }
+  &-medium {
+    font-size: 20px;
+  }
+  &-small {
+    font-size: 16px;
+    color: #fff;
+  }
+}
+.gotop {
+  font-size: 30px;
+  color: $dark;
+  cursor: pointer;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  transition: color 0.2s linear;
+  &:hover {
+    color: #fff;
+  }
+}
