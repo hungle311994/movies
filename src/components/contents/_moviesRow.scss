@@ -1,4 +1,4 @@
-.trending {
+.moviesRow {
   width: 100%;
   padding: 0 50px;
   color: #fff;
@@ -39,10 +39,10 @@
   }
   &-items {
     width: 100%;
-    height: 370px;
-    margin-top: 30px;
+    height: 100%;
     overflow-x: scroll;
-    padding-bottom: 20px;
+    overflow-y: hidden;
+    padding: 45px 0;
     &::-webkit-scrollbar {
       height: 7px;
     }
@@ -58,6 +58,9 @@
     cursor: pointer;
     position: relative;
     transition: all 0.3s linear;
+    &:hover {
+      transform: scale(1.05);
+    }
     &:hover &-icon {
       width: 80px;
       height: 50px;
@@ -84,19 +87,21 @@
       object-fit: cover;
     }
     &-title {
-      display: block;
       width: 100%;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      color: #fff;
       padding: 0 15px;
+      margin-top: 10px;
       font-size: 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     &-icon {
       width: 0;
       height: 0;
+      color: #fff;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -118,6 +123,21 @@
       width: 0;
       height: 0;
       transition: all 0.3s linear;
+    }
+    &-rating {
+      position: absolute;
+      left: 0;
+      top: 30px;
+      width: 60px;
+      height: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 0 100rem 100rem 0;
+      color: rgba(250, 250, 250, 0.8);
+      font-size: 13px;
+      display: flex;
+      column-gap: 3px;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

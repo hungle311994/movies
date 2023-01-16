@@ -1,9 +1,13 @@
 @import "./scss/variables";
+@import "./scss/mixin";
 @import "./components/navbar/navbar";
 @import "./pages/home/home";
 @import "./pages/movies/movies";
 @import "./pages/tv-series/tv-series";
-@import "./components/trending/trending";
+@import "./components/contents/moviesRow";
+@import "./components/contents/moviesCards";
+@import "./components/pagination/pagination";
+@import "./components/footer/footer";
 
 *,
 *:before,
@@ -13,8 +17,7 @@
   padding: 0;
 }
 body {
-  // min-height: 100vh;
-  min-height: 300vh;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
   background-color: $primary;
   position: relative;
@@ -67,6 +70,7 @@ a {
   bottom: 25px;
   right: 25px;
   transition: color 0.2s linear;
+  z-index: 999;
   &:hover {
     color: #fff;
   }

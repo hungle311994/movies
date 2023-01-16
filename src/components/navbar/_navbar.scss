@@ -19,6 +19,10 @@
     display: flex;
     align-items: center;
     gap: 0 15px;
+    background-image: $gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     &-image {
       width: 45px;
       height: 45px;

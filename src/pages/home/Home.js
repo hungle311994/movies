@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { VscMute, VscUnmute } from "react-icons/vsc";
-import Trending from "../../components/trending/Trending";
 import { useScrollY } from "../../hooks/useScrollY";
+import Contents from "../../components/contents/Contents";
+import { useDispatch } from "react-redux";
+import {
+  actionFetchTrendingMoviesListAPI,
+  actionFetchTopRatedMoviesListAPI,
+  actionFetchTopRatedTVListAPI,
+  actionFetchTrendingTVListAPI,
+} from "../../redux/actions/moviesAction";
 
 const Home = () => {
   const [isMute, setIsMute] = useState(true);
   const [scrollY] = useScrollY(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actionFetchTrendingMoviesListAPI());
+    dispatch(actionFetchTopRatedMoviesListAPI());
+    dispatch(actionFetchTrendingTVListAPI());
+    dispatch(actionFetchTopRatedTVListAPI());
+  }, [dispatch]);
+
   return (
     <div className="home">
       <div className="home-video">
@@ -39,7 +55,7 @@ const Home = () => {
         )}
         <div className="home-video-bottom"></div>
       </div>
-      <Trending />
+      <Contents />
     </div>
   );
 };
