@@ -10,6 +10,7 @@
 @import "./components/pagination/pagination";
 @import "./components/search/search";
 @import "./components/error/error";
+@import "./components/modal/modal";
 @import "./components/footer/footer";
 
 *,
@@ -25,8 +26,10 @@ body {
   background-color: $primary;
   position: relative;
   user-select: none;
+
   &::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
   }
   &::-webkit-scrollbar-thumb {
     background-image: linear-gradient(to bottom, $secondary, $secondary-1);

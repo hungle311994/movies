@@ -39,3 +39,11 @@ export const getSimilarMovies = (movieID) => {
     null
   );
 };
+
+export const getMoviesVideos = (movieID) => {
+  return api(
+    "GET",
+    `movie/${movieID}/videos?api_key=${API_KEY}&language=en-US`,
+    null
+  );
+};

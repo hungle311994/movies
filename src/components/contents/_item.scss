@@ -100,6 +100,7 @@
         font-size: 15px;
         line-height: 1.8;
         margin-bottom: 10px;
+        color: $dark;
       }
       &-tagline {
         font-size: 14px;
@@ -108,7 +109,7 @@
         margin-bottom: 20px;
       }
       &-heading {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: 400;
         margin-bottom: 10px;
       }
@@ -151,6 +152,80 @@
         font-weight: 300;
         font-size: 13px;
       }
+      &-seasons {
+        width: 100%;
+        height: 100%;
+        margin-top: 30px;
+        &-heading {
+          font-size: 25px;
+          font-weight: 300;
+          margin-bottom: 10px;
+        }
+        &-view {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+          gap: 10px;
+        }
+        &-item {
+          width: 100%;
+          min-width: 100px;
+          height: 100%;
+          cursor: pointer;
+          border-radius: 10px;
+          transition: all 0.3s ease;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+        &-image {
+          width: 100px;
+          height: 170px;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+        &-title {
+          font-size: 13px;
+          color: $dark;
+          text-align: center;
+          display: block;
+        }
+      }
+      &-createdBy {
+        width: 100%;
+        height: 100%;
+        margin-top: 25px;
+        &-heading {
+          color: #fff;
+          font-weight: 300;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        &-view {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+          gap: 7px;
+          &-item {
+            width: 70px;
+            height: 100%;
+          }
+          &-image {
+            width: 100%;
+            border-radius: 100rem;
+            height: 70px;
+            object-fit: cover;
+          }
+          &-name {
+            font-size: 13px;
+            color: $dark;
+            text-align: center;
+            display: block;
+          }
+        }
+      }
     }
     &-item {
       color: #fff;
@@ -160,17 +235,22 @@
       justify-content: center;
     }
     &-vote {
-      width: 50px;
-      height: 50px;
-      border: 3px solid $secondary;
-      border-radius: 100rem;
       font-size: 20px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin-right: 20px;
+      margin-right: 10px;
+      padding-right: 10px;
+      border-right: 1px solid $dark;
     }
-    &-rating,
+    &-numVoted {
+      color: $secondary;
+      font-size: 30px;
+      margin-right: 5px;
+    }
+    &-maxVote {
+      color: $dark;
+    }
+    & &-rating,
     &-review {
       display: block;
       &-text {

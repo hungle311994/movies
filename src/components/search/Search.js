@@ -8,9 +8,11 @@ import { useDispatch } from "react-redux";
 import {
   actionGetMoviesDetailListAPI,
   actionGetSimilarMoviesAPI,
+} from "../../redux/actions/moviesAction";
+import {
   actionGetSimilarTVAPI,
   actionGetTVDetailListAPI,
-} from "../../redux/actions/moviesAction";
+} from "../../redux/actions/tvAction";
 
 const Search = ({
   searchList,

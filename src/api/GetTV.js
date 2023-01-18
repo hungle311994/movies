@@ -39,3 +39,11 @@ export const getSimilarTV = (tvID) => {
     null
   );
 };
+
+export const getTVVideos = (tvID) => {
+  return api(
+    "GET",
+    `tv/${tvID}/videos?api_key=${API_KEY}&language=en-US`,
+    null
+  );
+};

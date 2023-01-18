@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import {
   actionGetMoviesDetailListAPI,
   actionGetSimilarMoviesAPI,
+  actionMoviesVideosAPI,
 } from "../../redux/actions/moviesAction";
 
 const MoviesCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
@@ -16,6 +17,7 @@ const MoviesCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
     console.log("item", item.id);
     dispatch(actionGetMoviesDetailListAPI(item.id));
     dispatch(actionGetSimilarMoviesAPI(item.id));
+    dispatch(actionMoviesVideosAPI(item.id));
   };
   return (
     <div className="cards">

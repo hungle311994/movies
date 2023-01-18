@@ -2,15 +2,17 @@ import React from "react";
 import { CiPlay1 } from "react-icons/ci";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { HiOutlineLink } from "react-icons/hi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Row from "./Row";
+import { actionShowModalVideos } from "../../redux/actions/modalAction";
 
 const MoviesItem = () => {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const moviesDetail = state.moviesRedux.moviesDetail;
   const similarMoviesList = state.moviesRedux.similarMoviesList;
   const handleWatchTrailer = () => {
-    console.log("Click");
+    dispatch(actionShowModalVideos());
   };
 
   return (
@@ -40,7 +42,10 @@ const MoviesItem = () => {
           />
           <div className="item-content-item">
             <span className="item-content-vote">
-              {Math.ceil(moviesDetail.vote_average)}
+              <span className="item-content-numVoted">
+                {moviesDetail.vote_average}
+              </span>
+              <span className="item-content-maxVote">/ 10</span>
             </span>
             <div className="item-content-popular">
               <span className="item-content-rating">
@@ -83,7 +88,7 @@ const MoviesItem = () => {
           <div>
             <h3 className="item-content-detail-heading">Description</h3>
             <p className="item-content-detail-overview">
-              {moviesDetail.overview}
+              "{moviesDetail.overview}"
             </p>
             <span className="item-content-detail-tagline">
               "{moviesDetail.tagline}"

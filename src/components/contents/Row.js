@@ -6,17 +6,25 @@ import { useDispatch } from "react-redux";
 import {
   actionGetMoviesDetailListAPI,
   actionGetSimilarMoviesAPI,
+  actionMoviesVideosAPI,
+} from "../../redux/actions/moviesAction";
+import {
   actionGetSimilarTVAPI,
   actionGetTVDetailListAPI,
-} from "../../redux/actions/moviesAction";
+  actionTVVideosAPI,
+} from "../../redux/actions/tvAction";
 
 const Row = ({ list, title, path }) => {
   const dispatch = useDispatch();
   const handleMovies = (item) => {
+    // Movies
     dispatch(actionGetMoviesDetailListAPI(item.id));
     dispatch(actionGetSimilarMoviesAPI(item.id));
+    dispatch(actionMoviesVideosAPI(item.id));
+    // TV
     dispatch(actionGetTVDetailListAPI(item.id));
     dispatch(actionGetSimilarTVAPI(item.id));
+    dispatch(actionTVVideosAPI(item.id));
   };
   return (
     <div className="row">

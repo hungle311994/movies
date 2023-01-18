@@ -7,9 +7,11 @@ import { useDispatch } from "react-redux";
 import {
   actionFetchTrendingMoviesListAPI,
   actionFetchTopRatedMoviesListAPI,
+} from "../../redux/actions/moviesAction";
+import {
   actionFetchTopRatedTVListAPI,
   actionFetchTrendingTVListAPI,
-} from "../../redux/actions/moviesAction";
+} from "../../redux/actions/tvAction";
 
 const Home = () => {
   const [isMute, setIsMute] = useState(true);

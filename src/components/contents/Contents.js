@@ -6,8 +6,8 @@ const Contents = () => {
   const state = useSelector((state) => state);
   const trendingMoviesList = state.moviesRedux.trendingMoviesList;
   const topRatedMoviesList = state.moviesRedux.topRatedMoviesList;
-  const trendingTVList = state.moviesRedux.trendingTVList;
-  const topRatedTVList = state.moviesRedux.topRatedTVList;
+  const trendingTVList = state.tvRedux.trendingTVList;
+  const topRatedTVList = state.tvRedux.topRatedTVList;
 
   return (
     <>

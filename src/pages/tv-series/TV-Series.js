@@ -6,13 +6,13 @@ import Search from "../../components/search/Search";
 import {
   actionFetchPopularTVListAPI,
   actionSearchTVListAPI,
-} from "../../redux/actions/moviesAction";
+} from "../../redux/actions/tvAction";
 
 const TVSeries = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const popularTVList = state.moviesRedux.popularTVList;
-  const tvSearchList = state.moviesRedux.tvSearchList;
+  const popularTVList = state.tvRedux.popularTVList;
+  const tvSearchList = state.tvRedux.tvSearchList;
   const [page, setPage] = useState(1);
   const [list, setList] = useState([]);
   const [searchList, setSearchList] = useState([]);

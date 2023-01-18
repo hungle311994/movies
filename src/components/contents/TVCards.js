@@ -8,7 +8,8 @@ import { useDispatch } from "react-redux";
 import {
   actionGetSimilarTVAPI,
   actionGetTVDetailListAPI,
-} from "../../redux/actions/moviesAction";
+  actionTVVideosAPI,
+} from "../../redux/actions/tvAction";
 
 const TVCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const TVCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
     console.log("item", item.id);
     dispatch(actionGetTVDetailListAPI(item.id));
     dispatch(actionGetSimilarTVAPI(item.id));
+    dispatch(actionTVVideosAPI(item.id));
   };
   return (
     <div className="cards">

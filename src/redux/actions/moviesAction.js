@@ -1,5 +1,6 @@
 import {
   getMoviesDetail,
+  getMoviesVideos,
   getPopularMovies,
   getSearchMoviesList,
   getSimilarMovies,
@@ -7,26 +8,13 @@ import {
   getTrendingMovies,
 } from "../../api/GetMovies";
 import {
-  getPopularTV,
-  getSearchTVList,
-  getSimilarTV,
-  getTopRatedTV,
-  getTrendingTV,
-  getTVDetail,
-} from "../../api/GetTV";
-import {
   GET_POPULAR_MOVIES,
-  GET_POPULAR_TV,
   GET_TOP_RATED_MOVIES,
-  GET_TOP_RATED_TV,
   GET_TRENDING_MOVIES,
-  GET_TRENDING_TV,
   SEARCH_MOVIES_LIST,
-  SEARCH_TV_LIST,
   GET_MOVIES_DETAIL,
   GET_SIMILAR_MOVIES,
-  GET_TV_DETAIL,
-  GET_SIMILAR_TV,
+  GET_MOVIES_VIDEOS,
 } from "../types";
 
 // Trending Movies
@@ -59,36 +47,6 @@ export const actionFetchTopRatedMoviesList = (topRatedMoviesListAPI) => {
   };
 };
 
-// Trending TV
-export const actionFetchTrendingTVListAPI = () => {
-  return async (dispatch) => {
-    const res = await getTrendingTV();
-    dispatch(actionFetchTrendingTVList(res.data.results));
-  };
-};
-
-export const actionFetchTrendingTVList = (trendingTVListAPI) => {
-  return {
-    type: GET_TRENDING_TV,
-    payload: trendingTVListAPI,
-  };
-};
-
-// Top rated TV
-export const actionFetchTopRatedTVListAPI = () => {
-  return async (dispatch) => {
-    const res = await getTopRatedTV();
-    dispatch(actionFetchTopRatedTVList(res.data.results));
-  };
-};
-
-export const actionFetchTopRatedTVList = (topRatedTVListAPI) => {
-  return {
-    type: GET_TOP_RATED_TV,
-    payload: topRatedTVListAPI,
-  };
-};
-
 // Popular Movies
 export const actionFetchPopularMoviesListAPI = (page) => {
   return async (dispatch) => {
@@ -104,27 +62,12 @@ export const actionFetchPopularMoviesList = (popularMoviesListAPI) => {
   };
 };
 
-// Popular TV
-export const actionFetchPopularTVListAPI = (page) => {
-  return async (dispatch) => {
-    const res = await getPopularTV(page);
-    dispatch(actionFetchPopularTVList(res.data.results));
-  };
-};
-
-export const actionFetchPopularTVList = (popularTVListAPI) => {
-  return {
-    type: GET_POPULAR_TV,
-    payload: popularTVListAPI,
-  };
-};
-
 // Search Movies Detail
 export const actionSearchMoviesListAPI = (keyWords, page) => {
   return async (dispatch) => {
     const res = await getSearchMoviesList(keyWords, page);
     dispatch(actionSearchMoviesDetail(res.data.results));
-    console.log(res.data.results);
+    // console.log(res.data.results);
   };
 };
 
@@ -135,27 +78,12 @@ export const actionSearchMoviesDetail = (moviesSearch) => {
   };
 };
 
-// Search Movies Detail
-export const actionSearchTVListAPI = (keyWords, page) => {
-  return async (dispatch) => {
-    const res = await getSearchTVList(keyWords, page);
-    dispatch(actionSearchTVDetail(res.data.results));
-  };
-};
-
-export const actionSearchTVDetail = (tvSearch) => {
-  return {
-    type: SEARCH_TV_LIST,
-    payload: tvSearch,
-  };
-};
-
 // Get Movies Detail List
 export const actionGetMoviesDetailListAPI = (movieID) => {
   return async (dispatch) => {
     const res = await getMoviesDetail(movieID);
     dispatch(actionGetMoviesDetailList(res.data));
-    console.log(res.data);
+    // console.log(res.data);
   };
 };
 
@@ -181,34 +109,17 @@ export const actionGetSimilarMovies = (similarMoviesList) => {
   };
 };
 
-// Get TV Detail List
-export const actionGetTVDetailListAPI = (tvID) => {
+// Get Similar Movies
+export const actionMoviesVideosAPI = (movieID) => {
   return async (dispatch) => {
-    const res = await getTVDetail(tvID);
-    dispatch(actionGetTVDetailList(res.data));
-    console.log(res.data);
+    const res = await getMoviesVideos(movieID);
+    dispatch(actionMoviesVideos(res.data.results));
   };
 };
 
-export const actionGetTVDetailList = (tvDetailList) => {
+export const actionMoviesVideos = (moviesVideos) => {
   return {
-    type: GET_TV_DETAIL,
-    payload: tvDetailList,
-  };
-};
-
-// Get Similar TV
-export const actionGetSimilarTVAPI = (tvID) => {
-  return async (dispatch) => {
-    const res = await getSimilarTV(tvID);
-    dispatch(actionGetSimilarTV(res.data.results));
-    // console.log(res.data);
-  };
-};
-
-export const actionGetSimilarTV = (similarTVList) => {
-  return {
-    type: GET_SIMILAR_TV,
-    payload: similarTVList,
+    type: GET_MOVIES_VIDEOS,
+    payload: moviesVideos,
   };
 };
