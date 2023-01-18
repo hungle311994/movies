@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
 import { useDispatch } from "react-redux";
 import {
-  actionGetMoviesDetailListAPI,
-  actionGetSimilarMoviesAPI,
+  actionGetSimilarTVAPI,
+  actionGetTVDetailListAPI,
 } from "../../redux/actions/moviesAction";
 
-const MoviesCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
+const TVCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
   const dispatch = useDispatch();
   const handleMovies = (item) => {
     console.log("item", item.id);
-    dispatch(actionGetMoviesDetailListAPI(item.id));
-    dispatch(actionGetSimilarMoviesAPI(item.id));
+    dispatch(actionGetTVDetailListAPI(item.id));
+    dispatch(actionGetSimilarTVAPI(item.id));
   };
   return (
     <div className="cards">
@@ -28,7 +28,7 @@ const MoviesCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
                 className="cards-item"
                 key={item.id}
                 onClick={() => handleMovies(item)}
-                to={`/movies/${item.id}`}
+                to={`/tv-series/${item.id}`}
               >
                 <span className="cards-item-icon">
                   <FaPlay className="cards-item-iconplay" />
@@ -60,4 +60,4 @@ const MoviesCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
   );
 };
 
-export default MoviesCards;
+export default TVCards;

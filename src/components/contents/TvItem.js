@@ -5,10 +5,10 @@ import { HiOutlineLink } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import Row from "./Row";
 
-const MoviesItem = () => {
+const TvItem = () => {
   const state = useSelector((state) => state);
-  const moviesDetail = state.moviesRedux.moviesDetail;
-  const similarMoviesList = state.moviesRedux.similarMoviesList;
+  const tvDetail = state.moviesRedux.tvDetail;
+  const similarTVList = state.moviesRedux.similarTVList;
   const handleWatchTrailer = () => {
     console.log("Click");
   };
@@ -17,11 +17,7 @@ const MoviesItem = () => {
     <div className="item">
       <div className="item-poster">
         <img
-          src={
-            moviesDetail.backdrop_path !== null
-              ? `https://image.tmdb.org/t/p/original/${moviesDetail.backdrop_path}`
-              : require("../../assets/404-error-back-drop.png")
-          }
+          src={`https://image.tmdb.org/t/p/original/${tvDetail.backdrop_path}`}
           alt="backdrop_path"
           className="item-poster-image"
         />
@@ -30,25 +26,21 @@ const MoviesItem = () => {
       <div className="item-content">
         <div className="item-content-imageWrapper">
           <img
-            src={
-              moviesDetail.poster_path !== null
-                ? `https://image.tmdb.org/t/p/original/${moviesDetail.poster_path}`
-                : require("../../assets/PictureNotAvailable.png")
-            }
+            src={`https://image.tmdb.org/t/p/original/${tvDetail.poster_path}`}
             alt="poster_path"
             className="item-content-image"
           />
           <div className="item-content-item">
             <span className="item-content-vote">
-              {Math.ceil(moviesDetail.vote_average)}
+              {Math.ceil(tvDetail.vote_average)}
             </span>
             <div className="item-content-popular">
               <span className="item-content-rating">
-                {moviesDetail.popularity}
+                {tvDetail.popularity}
                 <span className="item-content-rating-text"> ratings</span>
               </span>
               <span className="item-content-review">
-                {moviesDetail.vote_count}
+                {tvDetail.vote_count}
                 <span className="item-content-review-text"> reviews</span>
               </span>
             </div>
@@ -56,10 +48,10 @@ const MoviesItem = () => {
         </div>
         <div className="item-content-detail">
           <h2 className="item-content-detail-title">
-            {moviesDetail.title || moviesDetail.name}
+            {tvDetail.title || tvDetail.name}
           </h2>
           <span className="item-content-detail-originalTitle">
-            Original title: "{moviesDetail.original_title}"
+            Original title: "{tvDetail.original_title}"
           </span>
           <div className="item-content-detail-trailer">
             <span
@@ -72,7 +64,7 @@ const MoviesItem = () => {
               <IoBookmarkOutline />
             </span>
             <a
-              href={moviesDetail.homepage}
+              href={tvDetail.homepage}
               target="_blank"
               rel="noreferrer"
               className="item-content-detail-link"
@@ -82,11 +74,9 @@ const MoviesItem = () => {
           </div>
           <div>
             <h3 className="item-content-detail-heading">Description</h3>
-            <p className="item-content-detail-overview">
-              {moviesDetail.overview}
-            </p>
+            <p className="item-content-detail-overview">{tvDetail.overview}</p>
             <span className="item-content-detail-tagline">
-              "{moviesDetail.tagline}"
+              "{tvDetail.tagline}"
             </span>
           </div>
           <div className="item-content-detail-table">
@@ -97,8 +87,8 @@ const MoviesItem = () => {
                 <tr className="item-content-detail-tr">
                   <th className="item-content-detail-th">Genres</th>
                   <td className="item-content-detail-td">
-                    {moviesDetail.genres &&
-                      moviesDetail.genres.map((item, idx) => (
+                    {tvDetail.genres &&
+                      tvDetail.genres.map((item, idx) => (
                         <span className="item-content-detail-name" key={idx}>
                           {item.name}
                         </span>
@@ -108,13 +98,13 @@ const MoviesItem = () => {
                 <tr className="item-content-detail-tr">
                   <th className="item-content-detail-th">Runtime</th>
                   <td className="item-content-detail-td">
-                    {moviesDetail.runtime} min
+                    {tvDetail.runtime} min
                   </td>
                 </tr>
                 <tr className="item-content-detail-tr">
                   <th className="item-content-detail-th">Release Date</th>
                   <td className="item-content-detail-td">
-                    {moviesDetail.release_date} ( {moviesDetail.status} )
+                    {tvDetail.release_date} ( {tvDetail.status} )
                   </td>
                 </tr>
               </tbody>
@@ -124,13 +114,13 @@ const MoviesItem = () => {
       </div>
       <div className="item-similar">
         <Row
-          list={similarMoviesList}
+          list={similarTVList}
           title="You might also like"
-          path="movies"
+          path="tv-series"
         />
       </div>
     </div>
   );
 };
 
-export default MoviesItem;
+export default TvItem;

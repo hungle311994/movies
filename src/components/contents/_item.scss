@@ -1,0 +1,185 @@
+.item {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  position: relative;
+  &-poster {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &-blur {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(to bottom, transparent, $primary);
+    }
+  }
+  &-content {
+    width: 100%;
+    max-width: 1188px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 300px 50px 0;
+    display: flex;
+    gap: 0 30px;
+    &-imageWrapper {
+      width: 350px;
+      overflow: hidden;
+    }
+    &-image {
+      width: 100%;
+      display: inline-block;
+      border-radius: 30px;
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
+    &-detail {
+      width: 100%;
+      max-width: 708px;
+      height: 100%;
+      &-title {
+        font-size: 55px;
+        font-weight: 500;
+      }
+      &-trailer {
+        width: 100%;
+        height: 50px;
+        margin: 30px 0;
+        display: flex;
+        gap: 0 15px;
+      }
+      &-watch,
+      &-bookmark,
+      &-link {
+        height: 100%;
+        font-size: 18px;
+        font-weight: 300;
+        cursor: pointer;
+        border-radius: 100rem;
+        border: 1px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+      }
+      &-watch {
+        gap: 0 10px;
+        background-color: $secondary;
+        border: 1px solid $secondary;
+        padding: 0 25px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s ease;
+        &:hover {
+          box-shadow: 1px 1px 10px 2px $secondary;
+        }
+      }
+      &-bookmark,
+      &-link {
+        height: 100%;
+        width: 50px;
+        transition: all 0.3s ease;
+        &:hover {
+          color: $secondary;
+          border: 1px solid;
+        }
+      }
+
+      &-overview {
+        font-weight: 400;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+      &-tagline {
+        font-size: 14px;
+        display: block;
+        color: $dark;
+        margin-bottom: 20px;
+      }
+      &-heading {
+        font-size: 30px;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+
+      &-originalTitle {
+        color: $dark;
+      }
+      &-table {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+      }
+      &-tbody {
+        width: 100%;
+        height: 100%;
+      }
+      &-tr {
+        width: 100%;
+        height: 45px;
+      }
+      &-th {
+        font-size: 16px;
+        font-weight: 500;
+        width: 150px;
+      }
+      &-name {
+        width: 100%;
+        height: 30px;
+        padding: 5px 10px;
+        background-color: $dark;
+        border-radius: 100rem;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        &:hover {
+          box-shadow: 1px 1px 10px 2px $dark;
+        }
+      }
+      &-td {
+        font-weight: 300;
+        font-size: 13px;
+      }
+    }
+    &-item {
+      color: #fff;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-vote {
+      width: 50px;
+      height: 50px;
+      border: 3px solid $secondary;
+      border-radius: 100rem;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 20px;
+    }
+    &-rating,
+    &-review {
+      display: block;
+      &-text {
+        font-size: 13px;
+        color: $dark;
+      }
+    }
+  }
+  &-similar {
+    margin-top: 100px;
+  }
+}

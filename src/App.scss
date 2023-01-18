@@ -4,9 +4,12 @@
 @import "./pages/home/home";
 @import "./pages/movies/movies";
 @import "./pages/tv-series/tv-series";
-@import "./components/contents/moviesRow";
-@import "./components/contents/moviesCards";
+@import "./components/contents/row";
+@import "./components/contents/cards";
+@import "./components/contents/item";
 @import "./components/pagination/pagination";
+@import "./components/search/search";
+@import "./components/error/error";
 @import "./components/footer/footer";
 
 *,

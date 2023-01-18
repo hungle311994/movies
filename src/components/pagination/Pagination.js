@@ -12,9 +12,16 @@ const Pagination = ({ onHandlePrevPage, onHandleNextPage, page }) => {
   return (
     <>
       <div className="panigation text text-small">
-        <SlArrowLeft className="panigation-left" onClick={handlePrevPage} />
+        <span className="panigation-left" onClick={handlePrevPage}>
+          <SlArrowLeft className="panigation-left-arrow" />
+          Prev
+        </span>
+
         <span className="panigation-text">{page}</span>
-        <SlArrowRight className="panigation-right" onClick={handleNextPage} />
+        <span className="panigation-right" onClick={handleNextPage}>
+          Next
+          <SlArrowRight className="panigation-right-arrow" />
+        </span>
       </div>
     </>
   );

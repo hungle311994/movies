@@ -2,29 +2,39 @@ import React, { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import MoviesCards from "../../components/contents/MoviesCards";
-import { actionFetchPopularMoviesListAPI } from "../../redux/actions/moviesAction";
+import Search from "../../components/search/Search";
+import {
+  actionFetchPopularMoviesListAPI,
+  actionSearchMoviesListAPI,
+} from "../../redux/actions/moviesAction";
 
 const Movies = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const popularMoviesList = state.moviesRedux.popularMoviesList;
+  const moviesSearchList = state.moviesRedux.moviesSearchList;
   const [page, setPage] = useState(1);
-  const [moviesList, setMoviesList] = useState([]);
+  const [list, setList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
+  const [searchKeyWords, setSearchKeyWords] = useState("");
   const onHandlePrevPage = () => {
     if (page > 1) {
       setPage(page - 1);
-      setMoviesList(popularMoviesList);
+      setList(popularMoviesList);
+      setSearchList(moviesSearchList);
     }
   };
   const onHandleNextPage = () => {
     if (page < 500) {
       setPage(page + 1);
-      setMoviesList(popularMoviesList);
+      setList(popularMoviesList);
+      setSearchList(moviesSearchList);
     }
   };
   useEffect(() => {
     dispatch(actionFetchPopularMoviesListAPI(page));
-  }, [dispatch, page]);
+    dispatch(actionSearchMoviesListAPI(searchKeyWords, page));
+  }, [dispatch, page, searchKeyWords]);
   return (
     <div className="movies">
       <div className="movies-background">
@@ -43,17 +53,29 @@ const Movies = () => {
               type="text"
               className="movies-content-search-input"
               placeholder="Search your interesting..."
+              onChange={(e) => setSearchKeyWords(e.target.value)}
+              value={searchKeyWords}
             />
             <HiOutlineSearch className="movies-content-search-icon"></HiOutlineSearch>
           </div>
           <div className="movies-content-detail">
-            <MoviesCards
-              moviesList={moviesList ? popularMoviesList : moviesList}
-              onHandlePrevPage={onHandlePrevPage}
-              onHandleNextPage={onHandleNextPage}
-              page={page}
-              path="movies"
-            />
+            {moviesSearchList.length > 0 || searchKeyWords.length > 0 ? (
+              <Search
+                searchList={searchList ? moviesSearchList : searchList}
+                page={page}
+                onHandlePrevPage={onHandlePrevPage}
+                onHandleNextPage={onHandleNextPage}
+                searchKeyWords={searchKeyWords}
+                path="movies"
+              />
+            ) : (
+              <MoviesCards
+                list={list ? popularMoviesList : list}
+                onHandlePrevPage={onHandlePrevPage}
+                onHandleNextPage={onHandleNextPage}
+                page={page}
+              />
+            )}
           </div>
         </div>
       </div>
