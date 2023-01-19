@@ -5,7 +5,12 @@ import TVCards from "../../components/contents/TVCards";
 import Search from "../../components/search/Search";
 import {
   actionFetchPopularTVListAPI,
+  actionGetSimilarTVAPI,
+  actionGetTVDetailListAPI,
   actionSearchTVListAPI,
+  actionTVCreditsAPI,
+  actionTVReviewsAPI,
+  actionTVVideosAPI,
 } from "../../redux/actions/tvAction";
 
 const TVSeries = () => {
@@ -30,6 +35,13 @@ const TVSeries = () => {
       setList(popularTVList);
       setSearchList(tvSearchList);
     }
+  };
+  const onHandleTV = (item) => {
+    dispatch(actionGetTVDetailListAPI(item.id));
+    dispatch(actionGetSimilarTVAPI(item.id));
+    dispatch(actionTVVideosAPI(item.id));
+    dispatch(actionTVCreditsAPI(item.id));
+    dispatch(actionTVReviewsAPI(item.id));
   };
   useEffect(() => {
     dispatch(actionFetchPopularTVListAPI(page));
@@ -67,6 +79,7 @@ const TVSeries = () => {
                 onHandleNextPage={onHandleNextPage}
                 searchKeyWords={searchKeyWords}
                 path="tv-series"
+                onHandle={onHandleTV}
               />
             ) : (
               <TVCards
@@ -74,6 +87,7 @@ const TVSeries = () => {
                 onHandlePrevPage={onHandlePrevPage}
                 onHandleNextPage={onHandleNextPage}
                 page={page}
+                onHandleTV={onHandleTV}
               />
             )}
           </div>

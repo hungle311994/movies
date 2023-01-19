@@ -47,3 +47,19 @@ export const getTVVideos = (tvID) => {
     null
   );
 };
+
+export const getTVCredits = (tvID) => {
+  return api(
+    "GET",
+    `tv/${tvID}/credits?api_key=${API_KEY}&language=en-US`,
+    null
+  );
+};
+
+export const getTVReviews = (tvID) => {
+  return api(
+    "GET",
+    `tv/${tvID}/reviews?api_key=${API_KEY}&language=en-US&page=1`,
+    null
+  );
+};

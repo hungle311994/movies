@@ -47,3 +47,19 @@ export const getMoviesVideos = (movieID) => {
     null
   );
 };
+
+export const getMoviesCredits = (movieID) => {
+  return api(
+    "GET",
+    `movie/${movieID}/credits?api_key=${API_KEY}&language=en-US`,
+    null
+  );
+};
+
+export const getMoviesReviews = (movieID) => {
+  return api(
+    "GET",
+    `movie/${movieID}/reviews?api_key=${API_KEY}&language=en-US&page=1`,
+    null
+  );
+};

@@ -4,15 +4,19 @@ import { CiStar } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
 import Error from "../error/Error";
-import { useDispatch } from "react-redux";
-import {
-  actionGetMoviesDetailListAPI,
-  actionGetSimilarMoviesAPI,
-} from "../../redux/actions/moviesAction";
-import {
-  actionGetSimilarTVAPI,
-  actionGetTVDetailListAPI,
-} from "../../redux/actions/tvAction";
+// import { useDispatch } from "react-redux";
+// import {
+//   actionGetMoviesDetailListAPI,
+//   actionGetSimilarMoviesAPI,
+//   actionMoviesCreditsAPI,
+//   actionMoviesVideosAPI,
+// } from "../../redux/actions/moviesAction";
+// import {
+//   actionGetSimilarTVAPI,
+//   actionGetTVDetailListAPI,
+//   actionTVCreditsAPI,
+//   actionTVVideosAPI,
+// } from "../../redux/actions/tvAction";
 
 const Search = ({
   searchList,
@@ -21,13 +25,21 @@ const Search = ({
   page,
   path,
   searchKeyWords,
+  onHandle,
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const handleMovies = (item) => {
-    dispatch(actionGetMoviesDetailListAPI(item.id));
-    dispatch(actionGetSimilarMoviesAPI(item.id));
-    dispatch(actionGetTVDetailListAPI(item.id));
-    dispatch(actionGetSimilarTVAPI(item.id));
+    onHandle(item);
+    // Movies
+    // dispatch(actionGetMoviesDetailListAPI(item.id));
+    // dispatch(actionGetSimilarMoviesAPI(item.id));
+    // dispatch(actionMoviesVideosAPI(item.id));
+    // dispatch(actionMoviesCreditsAPI(item.id));
+    // TV
+    // dispatch(actionGetTVDetailListAPI(item.id));
+    // dispatch(actionGetSimilarTVAPI(item.id));
+    // dispatch(actionTVVideosAPI(item.id));
+    // dispatch(actionTVCreditsAPI(item.id));
   };
   return (
     <div className="search">

@@ -1,5 +1,7 @@
 import {
+  getMoviesCredits,
   getMoviesDetail,
+  getMoviesReviews,
   getMoviesVideos,
   getPopularMovies,
   getSearchMoviesList,
@@ -15,6 +17,8 @@ import {
   GET_MOVIES_DETAIL,
   GET_SIMILAR_MOVIES,
   GET_MOVIES_VIDEOS,
+  GET_MOVIES_CREDITS,
+  GET_MOVIES_REVIEWS,
 } from "../types";
 
 // Trending Movies
@@ -121,5 +125,36 @@ export const actionMoviesVideos = (moviesVideos) => {
   return {
     type: GET_MOVIES_VIDEOS,
     payload: moviesVideos,
+  };
+};
+
+// Get Movies Credits
+export const actionMoviesCreditsAPI = (movieID) => {
+  return async (dispatch) => {
+    const res = await getMoviesCredits(movieID);
+    dispatch(actionMoviesCredits(res.data.cast));
+    // console.log(res.data.cast);
+  };
+};
+
+export const actionMoviesCredits = (moviesCredits) => {
+  return {
+    type: GET_MOVIES_CREDITS,
+    payload: moviesCredits,
+  };
+};
+
+// Get Movies Reviews
+export const actionMoviesReviewsAPI = (movieID) => {
+  return async (dispatch) => {
+    const res = await getMoviesReviews(movieID);
+    dispatch(actionMoviesReviews(res.data.results));
+  };
+};
+
+export const actionMoviesReviews = (moviesReviews) => {
+  return {
+    type: GET_MOVIES_REVIEWS,
+    payload: moviesReviews,
   };
 };

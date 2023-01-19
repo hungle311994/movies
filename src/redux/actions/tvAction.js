@@ -4,7 +4,9 @@ import {
   getSimilarTV,
   getTopRatedTV,
   getTrendingTV,
+  getTVCredits,
   getTVDetail,
+  getTVReviews,
   getTVVideos,
 } from "../../api/GetTV";
 import {
@@ -12,7 +14,9 @@ import {
   GET_SIMILAR_TV,
   GET_TOP_RATED_TV,
   GET_TRENDING_TV,
+  GET_TV_CREDITS,
   GET_TV_DETAIL,
+  GET_TV_REVIEWS,
   GET_TV_VIDEOS,
   SEARCH_TV_LIST,
   SET_SEASONS_TV_ITEM,
@@ -117,6 +121,7 @@ export const actionSearchTVDetail = (tvSearch) => {
     payload: tvSearch,
   };
 };
+
 // Get TV Videos
 export const actionTVVideosAPI = (tvID) => {
   return async (dispatch) => {
@@ -129,5 +134,35 @@ export const actionTVVideos = (tvVideos) => {
   return {
     type: GET_TV_VIDEOS,
     payload: tvVideos,
+  };
+};
+
+// Get TV Credits
+export const actionTVCreditsAPI = (tvID) => {
+  return async (dispatch) => {
+    const res = await getTVCredits(tvID);
+    dispatch(actionTVCredits(res.data.cast));
+  };
+};
+
+export const actionTVCredits = (tvCredits) => {
+  return {
+    type: GET_TV_CREDITS,
+    payload: tvCredits,
+  };
+};
+
+// Get TV Reviews
+export const actionTVReviewsAPI = (tvID) => {
+  return async (dispatch) => {
+    const res = await getTVReviews(tvID);
+    dispatch(actionTVReviews(res.data.results));
+  };
+};
+
+export const actionTVReviews = (tvReviews) => {
+  return {
+    type: GET_TV_REVIEWS,
+    payload: tvReviews,
   };
 };

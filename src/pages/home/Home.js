@@ -19,8 +19,10 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Movies
     dispatch(actionFetchTrendingMoviesListAPI());
     dispatch(actionFetchTopRatedMoviesListAPI());
+    // TV
     dispatch(actionFetchTrendingTVListAPI());
     dispatch(actionFetchTopRatedTVListAPI());
   }, [dispatch]);

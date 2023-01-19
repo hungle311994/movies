@@ -47,10 +47,10 @@
       max-width: 708px;
       height: 100%;
       &-title {
-        font-size: 55px;
+        font-size: 45px;
         font-weight: 500;
       }
-      &-trailer {
+      &-btn {
         width: 100%;
         height: 50px;
         margin: 30px 0;
@@ -71,18 +71,6 @@
         align-items: center;
         color: #fff;
       }
-      &-watch {
-        gap: 0 10px;
-        background-color: $secondary;
-        border: 1px solid $secondary;
-        padding: 0 25px;
-        position: relative;
-        overflow: hidden;
-        transition: 0.3s ease;
-        &:hover {
-          box-shadow: 1px 1px 10px 2px $secondary;
-        }
-      }
       &-bookmark,
       &-link {
         height: 100%;
@@ -93,7 +81,6 @@
           border: 1px solid;
         }
       }
-
       &-overview {
         font-weight: 400;
         font-weight: 300;
@@ -113,7 +100,6 @@
         font-weight: 400;
         margin-bottom: 10px;
       }
-
       &-originalTitle {
         color: $dark;
       }
@@ -151,6 +137,50 @@
       &-td {
         font-weight: 300;
         font-size: 13px;
+      }
+      &-credits {
+        width: 100%;
+        height: 100%;
+        margin: 25px 0 30px;
+        &-heading {
+          color: #fff;
+          font-weight: 300;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        &-view {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          padding: 10px 0;
+          &::-webkit-scrollbar {
+            height: 5px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-image: $gradient;
+            border-radius: 100rem;
+          }
+          gap: 10px;
+          &-item {
+            width: 70px;
+            min-width: 70px;
+            height: 100%;
+          }
+          &-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 100rem;
+            object-fit: cover;
+          }
+          &-name {
+            font-size: 12px;
+            color: $dark;
+            text-align: center;
+            display: block;
+          }
+        }
       }
       &-seasons {
         width: 100%;
@@ -192,39 +222,19 @@
           display: block;
         }
       }
-      &-createdBy {
+      &-trailer {
         width: 100%;
         height: 100%;
-        margin-top: 25px;
-        &-heading {
-          color: #fff;
-          font-weight: 300;
-          font-size: 20px;
-          margin-bottom: 10px;
-        }
-        &-view {
-          width: 100%;
-          height: 100%;
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-          gap: 7px;
-          &-item {
-            width: 70px;
-            height: 100%;
-          }
-          &-image {
-            width: 100%;
-            border-radius: 100rem;
-            height: 70px;
-            object-fit: cover;
-          }
-          &-name {
-            font-size: 13px;
-            color: $dark;
-            text-align: center;
-            display: block;
-          }
-        }
+        margin-top: 20px;
+      }
+      &-reactPlayerWrapper {
+        position: relative;
+        padding-top: 56.25%;
+      }
+      &-reactPlayer {
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
     &-item {
@@ -256,6 +266,159 @@
       &-text {
         font-size: 13px;
         color: $dark;
+      }
+    }
+  }
+  &-reviews {
+    width: 100%;
+    max-width: 1188px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #151514;
+    border-radius: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 0 30px;
+    &-form {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px 0;
+      &-heading {
+        font-size: 25px;
+        font-weight: 400;
+      }
+      &-desc {
+        font-size: 14px;
+        font-weight: 300;
+        color: $dark;
+      }
+      &-rating,
+      &-message {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+      }
+      &-title {
+        color: $dark;
+      }
+      &-select,
+      &-messageArea {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 7px;
+        color: $dark;
+        font-size: 12px;
+        background-color: #151514;
+        border: 1px solid $secondary;
+      }
+      &-select {
+        height: 40px;
+        transition: all 0.3s linear;
+        outline: none;
+
+        &:focus {
+          box-shadow: 1px 1px 10px 2px $secondary;
+        }
+      }
+      &-messageArea {
+        height: 120px;
+        transition: all 0.3s linear;
+        font-family: "Poppins", sans-serif;
+        outline: none;
+        &:placeholder-shown {
+          font-family: "Poppins", sans-serif;
+        }
+        &:focus {
+          outline: none;
+          box-shadow: 1px 1px 10px 2px $secondary;
+        }
+      }
+      &-btn {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        letter-spacing: 1.5px;
+        color: #fff;
+        background-image: $gradient;
+        transition: all 0.3s ease;
+      }
+    }
+    &-contents {
+      width: 100%;
+      height: 100%;
+      max-height: 550px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-image: $gradient;
+        border-radius: 100rem;
+      }
+      &-item {
+        width: 100%;
+        height: 120px;
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        gap: 0 10px;
+        justify-items: center;
+        align-items: center;
+        &-detail {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          gap: 0 10px;
+          align-items: center;
+          padding-right: 10px;
+          border-right: 1px solid $dark;
+          &-image {
+            width: 70px;
+            min-width: 70px;
+            height: 70px;
+            border-radius: 100rem;
+            object-fit: cover;
+          }
+          &-name {
+            display: block;
+            font-size: 18px;
+          }
+          &-message {
+            font-size: 13px;
+            color: $dark;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          &-createDate {
+            font-size: 12px;
+            color: $dark;
+          }
+        }
+        &-rating {
+          display: flex;
+          align-items: center;
+          &-voted {
+            font-size: 25px;
+            color: $secondary;
+            margin-right: 3px;
+          }
+          &-maxVote {
+            font-size: 14px;
+            color: $dark;
+          }
+        }
       }
     }
   }

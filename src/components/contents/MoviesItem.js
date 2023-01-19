@@ -1,20 +1,17 @@
 import React from "react";
-import { CiPlay1 } from "react-icons/ci";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { HiOutlineLink } from "react-icons/hi";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Row from "./Row";
-import { actionShowModalVideos } from "../../redux/actions/modalAction";
+import ReactPlayer from "react-player";
 
 const MoviesItem = () => {
-  const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const moviesDetail = state.moviesRedux.moviesDetail;
   const similarMoviesList = state.moviesRedux.similarMoviesList;
-  const handleWatchTrailer = () => {
-    dispatch(actionShowModalVideos());
-  };
-
+  const moviesCredits = state.moviesRedux.moviesCredits;
+  const moviesVideos = state.moviesRedux.moviesVideos;
+  const moviesReviews = state.moviesRedux.moviesReviews;
   return (
     <div className="item">
       <div className="item-poster">
@@ -66,13 +63,7 @@ const MoviesItem = () => {
           <span className="item-content-detail-originalTitle">
             Original title: "{moviesDetail.original_title}"
           </span>
-          <div className="item-content-detail-trailer">
-            <span
-              className="item-content-detail-watch"
-              onClick={handleWatchTrailer}
-            >
-              Watch trailer <CiPlay1 />
-            </span>
+          <div className="item-content-detail-btn">
             <span className="item-content-detail-bookmark">
               <IoBookmarkOutline />
             </span>
@@ -125,6 +116,149 @@ const MoviesItem = () => {
               </tbody>
             </table>
           </div>
+          {moviesCredits && moviesCredits[0] ? (
+            <div className="item-content-detail-credits">
+              <h3 className="item-content-detail-credits-heading">Cast</h3>
+              <div className="item-content-detail-credits-view">
+                {moviesCredits &&
+                  moviesCredits &&
+                  moviesCredits.map((item, idx) => (
+                    <div
+                      className="item-content-detail-credits-view-item"
+                      key={idx}
+                    >
+                      <img
+                        src={
+                          item.profile_path !== null
+                            ? `https://image.tmdb.org/t/p/original/${item.profile_path}`
+                            : require("../../assets/PictureNotAvailable.png")
+                        }
+                        alt="profile_path"
+                        className="item-content-detail-credits-view-image"
+                      />
+                      <span className="item-content-detail-credits-view-name">
+                        {item.name}
+                      </span>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {moviesVideos && moviesVideos[0] ? (
+            <div className="item-content-detail-trailer">
+              <h3 className="item-content-detail-heading">Trailer</h3>
+              <div className="item-content-detail-reactPlayerWrapper">
+                <ReactPlayer
+                  url={
+                    moviesVideos &&
+                    moviesVideos[0] &&
+                    `https://www.youtube.com/watch?v=${moviesVideos[0].key}`
+                  }
+                  playing={false}
+                  width="100%"
+                  height="100%"
+                  volume={1}
+                  className="item-content-detail-reactPlayer"
+                />
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      </div>
+      <div className="item-reviews">
+        <div className="item-reviews-form">
+          <h3 className="item-reviews-form-heading">
+            Review "{moviesDetail.title || moviesDetail.name}"
+          </h3>
+          <span className="item-reviews-form-desc">
+            Write a review for this movie. It will be posted on this page.
+          </span>
+          <div className="item-reviews-form-rating">
+            <label className="item-reviews-form-title">Select Rating</label>
+            <select className="item-reviews-form-select">
+              <option value="0">--Rating</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+              <option value="">4</option>
+              <option value="">5</option>
+              <option value="">6</option>
+              <option value="">7</option>
+              <option value="">8</option>
+              <option value="">9</option>
+              <option value="">10</option>
+            </select>
+          </div>
+          <div className="item-reviews-form-message">
+            <label className="item-reviews-form-title">Message</label>
+            <textarea
+              placeholder="Enter your impressive"
+              className="item-reviews-form-messageArea"
+            />
+          </div>
+          <button type="button" className="item-reviews-form-btn">
+            Submit
+          </button>
+        </div>
+        <div className="item-reviews-contents">
+          {moviesReviews && moviesReviews[0] ? (
+            moviesReviews.map((item, idx) => (
+              <div className="item-reviews-contents-item" key={idx}>
+                <div className="item-reviews-contents-item-detail">
+                  <img
+                    src={
+                      item.author_details.avatar_path !== null
+                        ? `https://image.tmdb.org/t/p/original/${item.author_details.avatar_path}`
+                        : require("../../assets/PictureNotAvailable.png")
+                    }
+                    alt="avatar_path"
+                    className="item-reviews-contents-item-detail-image"
+                  />
+                  <div className="item-reviews-contents-item-detail-desc">
+                    <span className="item-reviews-contents-item-detail-name">
+                      {item.author_details.username || item.author_details.name}
+                    </span>
+                    <span className="item-reviews-contents-item-detail-createDate">
+                      {item.created_at.slice(0, 10)}
+                    </span>
+                    <span className="item-reviews-contents-item-detail-message">
+                      {item.content}
+                    </span>
+                  </div>
+                </div>
+                <div className="item-reviews-contents-item-rating">
+                  {item.author_details.rating !== null ? (
+                    <>
+                      <span className="item-reviews-contents-item-rating-voted">
+                        {item.author_details.rating}
+                      </span>
+                      <span className="item-reviews-contents-item-rating-maxVote">
+                        / 10
+                      </span>
+                    </>
+                  ) : (
+                    <span style={{ fontSize: "13px", color: "#818181" }}>
+                      "Not voted"
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <span
+              style={{
+                fontSize: "16px",
+                textAlign: "center",
+                color: "#818181",
+              }}
+            >
+              Have no reviews
+            </span>
+          )}
         </div>
       </div>
       <div className="item-similar">

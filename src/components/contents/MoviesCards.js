@@ -4,20 +4,28 @@ import { CiStar } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
-import { useDispatch } from "react-redux";
-import {
-  actionGetMoviesDetailListAPI,
-  actionGetSimilarMoviesAPI,
-  actionMoviesVideosAPI,
-} from "../../redux/actions/moviesAction";
+// import { useDispatch } from "react-redux";
+// import {
+//   actionGetMoviesDetailListAPI,
+//   actionGetSimilarMoviesAPI,
+//   actionMoviesCreditsAPI,
+//   actionMoviesVideosAPI,
+// } from "../../redux/actions/moviesAction";
 
-const MoviesCards = ({ list, onHandlePrevPage, onHandleNextPage, page }) => {
-  const dispatch = useDispatch();
+const MoviesCards = ({
+  list,
+  onHandlePrevPage,
+  onHandleNextPage,
+  page,
+  onHandleMovies,
+}) => {
+  // const dispatch = useDispatch();
   const handleMovies = (item) => {
-    console.log("item", item.id);
-    dispatch(actionGetMoviesDetailListAPI(item.id));
-    dispatch(actionGetSimilarMoviesAPI(item.id));
-    dispatch(actionMoviesVideosAPI(item.id));
+    onHandleMovies(item);
+    // dispatch(actionGetMoviesDetailListAPI(item.id));
+    // dispatch(actionGetSimilarMoviesAPI(item.id));
+    // dispatch(actionMoviesVideosAPI(item.id));
+    // dispatch(actionMoviesCreditsAPI(item.id));
   };
   return (
     <div className="cards">

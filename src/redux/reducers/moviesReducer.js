@@ -6,6 +6,8 @@ import {
   GET_MOVIES_DETAIL,
   GET_SIMILAR_MOVIES,
   GET_MOVIES_VIDEOS,
+  GET_MOVIES_CREDITS,
+  GET_MOVIES_REVIEWS,
 } from "../types";
 
 const initialState = {
@@ -16,6 +18,8 @@ const initialState = {
   moviesDetail: [],
   similarMoviesList: [],
   moviesVideos: [],
+  moviesCredits: [],
+  moviesReviews: [],
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -40,6 +44,12 @@ export const moviesReducer = (state = initialState, action) => {
 
     case GET_MOVIES_VIDEOS:
       return { ...state, moviesVideos: action.payload };
+
+    case GET_MOVIES_CREDITS:
+      return { ...state, moviesCredits: action.payload };
+
+    case GET_MOVIES_REVIEWS:
+      return { ...state, moviesReviews: action.payload };
 
     default:
       return { ...state };

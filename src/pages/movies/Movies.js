@@ -5,6 +5,11 @@ import MoviesCards from "../../components/contents/MoviesCards";
 import Search from "../../components/search/Search";
 import {
   actionFetchPopularMoviesListAPI,
+  actionGetMoviesDetailListAPI,
+  actionGetSimilarMoviesAPI,
+  actionMoviesCreditsAPI,
+  actionMoviesReviewsAPI,
+  actionMoviesVideosAPI,
   actionSearchMoviesListAPI,
 } from "../../redux/actions/moviesAction";
 
@@ -30,6 +35,13 @@ const Movies = () => {
       setList(popularMoviesList);
       setSearchList(moviesSearchList);
     }
+  };
+  const onHandleMovies = (item) => {
+    dispatch(actionGetMoviesDetailListAPI(item.id));
+    dispatch(actionGetSimilarMoviesAPI(item.id));
+    dispatch(actionMoviesVideosAPI(item.id));
+    dispatch(actionMoviesCreditsAPI(item.id));
+    dispatch(actionMoviesReviewsAPI(item.id));
   };
   useEffect(() => {
     dispatch(actionFetchPopularMoviesListAPI(page));
@@ -67,6 +79,7 @@ const Movies = () => {
                 onHandleNextPage={onHandleNextPage}
                 searchKeyWords={searchKeyWords}
                 path="movies"
+                onHandleMovies={onHandleMovies}
               />
             ) : (
               <MoviesCards
@@ -74,6 +87,7 @@ const Movies = () => {
                 onHandlePrevPage={onHandlePrevPage}
                 onHandleNextPage={onHandleNextPage}
                 page={page}
+                onHandleMovies={onHandleMovies}
               />
             )}
           </div>
