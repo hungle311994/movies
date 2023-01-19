@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import MoviesCards from "../../components/contents/MoviesCards";
+import MoviesCards from "../../components/movies/MoviesCards";
 import Search from "../../components/search/Search";
 import {
   actionFetchPopularMoviesListAPI,
   actionGetMoviesDetailListAPI,
   actionGetSimilarMoviesAPI,
   actionMoviesCreditsAPI,
-  actionMoviesReviewsAPI,
   actionMoviesVideosAPI,
   actionSearchMoviesListAPI,
 } from "../../redux/actions/moviesAction";
@@ -41,7 +40,6 @@ const Movies = () => {
     dispatch(actionGetSimilarMoviesAPI(item.id));
     dispatch(actionMoviesVideosAPI(item.id));
     dispatch(actionMoviesCreditsAPI(item.id));
-    dispatch(actionMoviesReviewsAPI(item.id));
   };
   useEffect(() => {
     dispatch(actionFetchPopularMoviesListAPI(page));

@@ -7,14 +7,12 @@ import {
   actionGetMoviesDetailListAPI,
   actionGetSimilarMoviesAPI,
   actionMoviesCreditsAPI,
-  actionMoviesReviewsAPI,
   actionMoviesVideosAPI,
 } from "../../redux/actions/moviesAction";
 import {
   actionGetSimilarTVAPI,
   actionGetTVDetailListAPI,
   actionTVCreditsAPI,
-  actionTVReviewsAPI,
   actionTVVideosAPI,
 } from "../../redux/actions/tvAction";
 
@@ -26,13 +24,11 @@ const Row = ({ list, title, path }) => {
     dispatch(actionGetSimilarMoviesAPI(item.id));
     dispatch(actionMoviesVideosAPI(item.id));
     dispatch(actionMoviesCreditsAPI(item.id));
-    dispatch(actionMoviesReviewsAPI(item.id));
     // TV
     dispatch(actionGetTVDetailListAPI(item.id));
     dispatch(actionGetSimilarTVAPI(item.id));
     dispatch(actionTVVideosAPI(item.id));
     dispatch(actionTVCreditsAPI(item.id));
-    dispatch(actionTVReviewsAPI(item.id));
   };
   return (
     <div className="row">

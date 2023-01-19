@@ -1,12 +1,19 @@
 @import "./scss/variables";
 @import "./scss/mixin";
+@import "react-toastify/dist/ReactToastify.css";
 @import "./components/navbar/navbar";
-@import "./pages/home/home";
-@import "./pages/movies/movies";
-@import "./pages/tv-series/tv-series";
-@import "./components/contents/row";
-@import "./components/contents/cards";
-@import "./components/contents/item";
+@import "./components/home/home";
+@import "./components/movies/movies";
+@import "./components/tv-series/tv-series";
+@import "./components/row/row";
+@import "./scss/cards";
+@import "./scss/items";
+@import "./components/poster-rating/posterRating";
+@import "./components/table-detail-desc//tableDetail";
+@import "./components/credits/credits";
+@import "./components/seasons/seasons";
+@import "./components/trailer/trailer";
+@import "./components/reviews/reviews";
 @import "./components/pagination/pagination";
 @import "./components/search/search";
 @import "./components/error/error";
@@ -26,7 +33,6 @@ body {
   background-color: $primary;
   position: relative;
   user-select: none;
-
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -79,4 +85,11 @@ a {
   &:hover {
     color: #fff;
   }
+}
+.Toastify__toast {
+  background: #151514 !important;
+  font-size: 15px;
+}
+.Toastify__close-button {
+  color: $dark;
 }

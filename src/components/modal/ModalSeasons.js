@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { actionCloseModalSeasons } from "../../redux/actions/modalAction";
@@ -13,14 +13,6 @@ const ModalSeasons = () => {
     dispatch(actionCloseModalSeasons());
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", () =>
-      dispatch(actionCloseModalSeasons())
-    );
-    return document.removeEventListener("mousedown", () =>
-      dispatch(actionCloseModalSeasons())
-    );
-  }, [dispatch]);
   return (
     <div className={`modal ${showModalSeasons ? "active" : "inActive"}`}>
       <div className="modal-content">

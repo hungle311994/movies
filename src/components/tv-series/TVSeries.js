@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import TVCards from "../../components/contents/TVCards";
-import Search from "../../components/search/Search";
+import TVCards from "./TVCards";
+import Search from "../search/Search";
 import {
   actionFetchPopularTVListAPI,
   actionGetSimilarTVAPI,
   actionGetTVDetailListAPI,
   actionSearchTVListAPI,
   actionTVCreditsAPI,
-  actionTVReviewsAPI,
   actionTVVideosAPI,
 } from "../../redux/actions/tvAction";
 
@@ -41,7 +40,6 @@ const TVSeries = () => {
     dispatch(actionGetSimilarTVAPI(item.id));
     dispatch(actionTVVideosAPI(item.id));
     dispatch(actionTVCreditsAPI(item.id));
-    dispatch(actionTVReviewsAPI(item.id));
   };
   useEffect(() => {
     dispatch(actionFetchPopularTVListAPI(page));

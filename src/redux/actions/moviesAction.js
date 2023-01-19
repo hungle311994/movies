@@ -1,7 +1,6 @@
 import {
   getMoviesCredits,
   getMoviesDetail,
-  getMoviesReviews,
   getMoviesVideos,
   getPopularMovies,
   getSearchMoviesList,
@@ -18,7 +17,6 @@ import {
   GET_SIMILAR_MOVIES,
   GET_MOVIES_VIDEOS,
   GET_MOVIES_CREDITS,
-  GET_MOVIES_REVIEWS,
 } from "../types";
 
 // Trending Movies
@@ -141,20 +139,5 @@ export const actionMoviesCredits = (moviesCredits) => {
   return {
     type: GET_MOVIES_CREDITS,
     payload: moviesCredits,
-  };
-};
-
-// Get Movies Reviews
-export const actionMoviesReviewsAPI = (movieID) => {
-  return async (dispatch) => {
-    const res = await getMoviesReviews(movieID);
-    dispatch(actionMoviesReviews(res.data.results));
-  };
-};
-
-export const actionMoviesReviews = (moviesReviews) => {
-  return {
-    type: GET_MOVIES_REVIEWS,
-    payload: moviesReviews,
   };
 };

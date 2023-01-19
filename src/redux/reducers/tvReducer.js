@@ -8,7 +8,6 @@ import {
   SET_SEASONS_TV_ITEM,
   GET_TV_VIDEOS,
   GET_TV_CREDITS,
-  GET_TV_REVIEWS,
 } from "../types";
 
 const initialState = {
@@ -21,7 +20,6 @@ const initialState = {
   seasonsTVItem: [],
   tvVideos: [],
   tvCredits: [],
-  tvReviews: [],
 };
 
 export const tvReducer = (state = initialState, action) => {
@@ -53,8 +51,6 @@ export const tvReducer = (state = initialState, action) => {
     case GET_TV_CREDITS:
       return { ...state, tvCredits: action.payload };
 
-    case GET_TV_REVIEWS:
-      return { ...state, tvReviews: action.payload };
     default:
       return { ...state };
   }

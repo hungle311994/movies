@@ -1,0 +1,47 @@
+.item {
+  &-content {
+    &-posterRating {
+      width: 350px;
+      overflow: hidden;
+      &-image {
+        width: 100%;
+        display: inline-block;
+        border-radius: 30px;
+        object-fit: cover;
+        margin-bottom: 30px;
+      }
+      &-item {
+        color: #fff;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &-vote {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        padding-right: 10px;
+        border-right: 1px solid $dark;
+      }
+      &-numVoted {
+        color: $secondary;
+        font-size: 30px;
+        margin-right: 5px;
+      }
+      &-maxVote {
+        color: $dark;
+      }
+      &-rating,
+      &-review {
+        display: block;
+        &-text {
+          font-size: 13px;
+          color: $dark;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

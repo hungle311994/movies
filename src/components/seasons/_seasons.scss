@@ -1,0 +1,46 @@
+.item {
+  &-content {
+    &-detail {
+      &-seasons {
+        width: 100%;
+        height: 100%;
+        margin-top: 30px;
+        &-heading {
+          font-size: 25px;
+          font-weight: 300;
+          margin-bottom: 10px;
+        }
+        &-view {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+          gap: 10px;
+        }
+        &-item {
+          width: 100%;
+          min-width: 100px;
+          height: 100%;
+          cursor: pointer;
+          border-radius: 10px;
+          transition: all 0.3s ease;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+        &-image {
+          width: 100px;
+          height: 170px;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+        &-title {
+          font-size: 13px;
+          color: $dark;
+          text-align: center;
+          display: block;
+        }
+      }
+    }
+  }
+}

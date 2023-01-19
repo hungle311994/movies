@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { VscMute, VscUnmute } from "react-icons/vsc";
 import { useScrollY } from "../../hooks/useScrollY";
-import Contents from "../../components/contents/Contents";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   actionFetchTrendingMoviesListAPI,
   actionFetchTopRatedMoviesListAPI,
@@ -12,12 +11,17 @@ import {
   actionFetchTopRatedTVListAPI,
   actionFetchTrendingTVListAPI,
 } from "../../redux/actions/tvAction";
+import Row from "../row/Row";
 
 const Home = () => {
-  const [isMute, setIsMute] = useState(true);
-  const [scrollY] = useScrollY(0);
   const dispatch = useDispatch();
-
+  const [scrollY] = useScrollY(0);
+  const [isMute, setIsMute] = useState(true);
+  const state = useSelector((state) => state);
+  const trendingMoviesList = state.moviesRedux.trendingMoviesList;
+  const topRatedMoviesList = state.moviesRedux.topRatedMoviesList;
+  const trendingTVList = state.tvRedux.trendingTVList;
+  const topRatedTVList = state.tvRedux.topRatedTVList;
   useEffect(() => {
     // Movies
     dispatch(actionFetchTrendingMoviesListAPI());
@@ -26,7 +30,6 @@ const Home = () => {
     dispatch(actionFetchTrendingTVListAPI());
     dispatch(actionFetchTopRatedTVListAPI());
   }, [dispatch]);
-
   return (
     <div className="home">
       <div className="home-video">
@@ -59,7 +62,10 @@ const Home = () => {
         )}
         <div className="home-video-bottom"></div>
       </div>
-      <Contents />
+      <Row list={trendingMoviesList} title="Trending Movies" path="movies" />
+      <Row list={topRatedMoviesList} title="Top Rated Movies" path="movies" />
+      <Row list={trendingTVList} title="Trending TV" path="tv-series" />
+      <Row list={topRatedTVList} title="Top Rated TV" path="tv-series" />
     </div>
   );
 };

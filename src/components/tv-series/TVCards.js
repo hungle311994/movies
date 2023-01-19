@@ -4,13 +4,6 @@ import { CiStar } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
-// import { useDispatch } from "react-redux";
-// import {
-//   actionGetSimilarTVAPI,
-//   actionGetTVDetailListAPI,
-//   actionTVCreditsAPI,
-//   actionTVVideosAPI,
-// } from "../../redux/actions/tvAction";
 
 const TVCards = ({
   list,
@@ -19,14 +12,8 @@ const TVCards = ({
   page,
   onHandleTV,
 }) => {
-  // const dispatch = useDispatch();
   const handleMovies = (item) => {
     onHandleTV(item);
-    console.log("item", item.id);
-    // dispatch(actionGetTVDetailListAPI(item.id));
-    // dispatch(actionGetSimilarTVAPI(item.id));
-    // dispatch(actionTVVideosAPI(item.id));
-    // dispatch(actionTVCreditsAPI(item.id));
   };
   return (
     <div className="cards">

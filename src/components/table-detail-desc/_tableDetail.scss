@@ -1,0 +1,41 @@
+.item {
+  &-content {
+    &-detail {
+      &-table {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+      }
+      &-tbody {
+        width: 100%;
+        height: 100%;
+      }
+      &-tr {
+        width: 100%;
+        height: 45px;
+      }
+      &-th {
+        font-size: 16px;
+        font-weight: 500;
+        width: 150px;
+      }
+      &-name {
+        width: 100%;
+        height: 30px;
+        padding: 5px 10px;
+        background-color: $dark;
+        border-radius: 100rem;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        &:hover {
+          box-shadow: 1px 1px 10px 2px $dark;
+        }
+      }
+      &-td {
+        font-weight: 300;
+        font-size: 13px;
+      }
+    }
+  }
+}
