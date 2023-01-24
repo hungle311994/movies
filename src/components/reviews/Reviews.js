@@ -5,13 +5,22 @@ import { getDate } from "../../utils/getDate";
 
 const Reviews = ({ detail }) => {
   const [message, setMessage] = useState("");
+  const reviewList = localStorage.getItem("reviewList")
+    ? JSON.parse(localStorage.getItem("reviewList"))
+    : [];
   const handleSubmit = () => {
+    const review = {
+      message: message,
+    };
     toast.success("Submit review success !", {
       position: toast.POSITION.TOP_RIGHT,
     });
     setMessage(message);
+    reviewList.push(review);
+    localStorage.setItem("reviewList", JSON.stringify(reviewList));
+    setMessage("");
   };
-  const handleRemoveReview = () => {
+  const handleRemoveReview = (mess, idx) => {
     toast.error("Deleted review !", {
       position: toast.POSITION.TOP_RIGHT,
     });
@@ -31,10 +40,7 @@ const Reviews = ({ detail }) => {
           <textarea
             placeholder="Enter your impressive"
             className="item-reviews-form-messageArea"
-            onChange={(e) => {
-              setMessage(e.target.value);
-              console.log(e.target.value);
-            }}
+            onChange={(e) => setMessage(e.target.value)}
             value={message}
           />
         </div>
@@ -47,46 +53,50 @@ const Reviews = ({ detail }) => {
         </button>
         <ToastContainer />
       </div>
+
       <div className="item-reviews-contents">
-        <span className="item-reviews-contents-count">Reviews (0)</span>
+        <span className="item-reviews-contents-count">
+          Reviews ({reviewList ? reviewList.length : "0"})
+        </span>
 
-        <div className="item-reviews-contents-item">
-          <div className="item-reviews-contents-item-detail">
-            <img
-              src="https://images.unsplash.com/photo-1673855945969-5a340b5c0843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              alt="avatar_path"
-              className="item-reviews-contents-item-detail-image"
-            />
-            <div className="item-reviews-contents-item-detail-desc">
-              <span className="item-reviews-contents-item-detail-name">
-                username
-              </span>
-              <span className="item-reviews-contents-item-detail-createDate">
-                {getDate()}
-              </span>
-              <span className="item-reviews-contents-item-detail-message">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-                corrupti vel suscipit reiciendis sapiente rerum libero
-                architecto delectus sequi dolor, voluptatem officiis laborum ad
-                voluptatibus. Ut culpa voluptas necessitatibus laboriosam?
-              </span>
+        {reviewList && reviewList[0] ? (
+          reviewList.map((mess, idx) => (
+            <div className="item-reviews-contents-item" key={idx}>
+              <div className="item-reviews-contents-item-detail">
+                <img
+                  src="https://source.unsplash.com/random"
+                  alt="avatar_path"
+                  className="item-reviews-contents-item-detail-image"
+                />
+                <div className="item-reviews-contents-item-detail-desc">
+                  <span className="item-reviews-contents-item-detail-name">
+                    username
+                  </span>
+                  <span className="item-reviews-contents-item-detail-createDate">
+                    {getDate()}
+                  </span>
+                  <span className="item-reviews-contents-item-detail-message">
+                    {mess.message}
+                  </span>
+                </div>
+              </div>
+              <AiFillCloseCircle
+                className="item-reviews-contents-item-remove"
+                onClick={() => handleRemoveReview(mess, idx)}
+              />
             </div>
-          </div>
-          <AiFillCloseCircle
-            className="item-reviews-contents-item-remove"
-            onClick={handleRemoveReview}
-          />
-        </div>
-
-        {/* <span
-          style={{
-            fontSize: "16px",
-            textAlign: "center",
-            color: "#818181",
-          }}
-        >
-          Have no reviews
-        </span> */}
+          ))
+        ) : (
+          <span
+            style={{
+              fontSize: "16px",
+              textAlign: "center",
+              color: "#818181",
+            }}
+          >
+            Have no reviews
+          </span>
+        )}
       </div>
     </div>
   );

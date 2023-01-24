@@ -4,6 +4,7 @@ import { useScrollY } from "../../hooks/useScrollY";
 
 const Navbar = () => {
   const [scrollY] = useScrollY();
+
   return (
     <div
       className="navbar"
@@ -20,8 +21,9 @@ const Navbar = () => {
             src={require("../../assets/logo.png")}
             alt="logo"
           />
-          The Movies
+          <span className="navbar-logo-title">The Movies</span>
         </NavLink>
+
         <div className="navbar-navigate">
           <NavLink to="/" className="navbar-navigate-text text text-medium">
             Home

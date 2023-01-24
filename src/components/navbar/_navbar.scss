@@ -15,6 +15,7 @@
     justify-content: space-between;
   }
   &-logo {
+    min-width: fit-content;
     height: 100%;
     display: flex;
     align-items: center;
@@ -26,10 +27,18 @@
     &-image {
       width: 45px;
       height: 45px;
+      @include mobile {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    &-title {
+      @include mobile {
+        font-size: 20px;
+      }
     }
   }
   &-navigate {
-    max-width: 261px;
     display: flex;
     gap: 0 20px;
     &-text {
@@ -56,6 +65,17 @@
     &-text:hover,
     &-text.active {
       color: #fff;
+    }
+    @include mobile {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 70px;
+      width: 100vw;
+      background-color: $primary;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 50px;
     }
   }
 }

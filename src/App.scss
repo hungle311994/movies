@@ -16,8 +16,8 @@
 @import "./components/reviews/reviews";
 @import "./components/pagination/pagination";
 @import "./components/search/search";
-@import "./components/error/error";
 @import "./components/modal/modal";
+@import "./components/error/error";
 @import "./components/footer/footer";
 
 *,
@@ -84,6 +84,9 @@ a {
   z-index: 999;
   &:hover {
     color: #fff;
+  }
+  @include mobile {
+    display: none;
   }
 }
 .Toastify__toast {
