@@ -77,7 +77,7 @@ const Movies = () => {
                 onHandleNextPage={onHandleNextPage}
                 searchKeyWords={searchKeyWords}
                 path="movies"
-                onHandleMovies={onHandleMovies}
+                onHandle={onHandleMovies}
               />
             ) : (
               <MoviesCards
