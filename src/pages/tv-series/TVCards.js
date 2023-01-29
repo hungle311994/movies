@@ -5,15 +5,15 @@ import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/pagination/Pagination";
 
-const MoviesCards = ({
+const TVCards = ({
   list,
   onHandlePrevPage,
   onHandleNextPage,
   page,
-  onHandleMovies,
+  onHandleTV,
 }) => {
   const handleMovies = (item) => {
-    onHandleMovies(item);
+    onHandleTV(item);
   };
   return (
     <div className="cards">
@@ -26,14 +26,14 @@ const MoviesCards = ({
                 className="cards-item"
                 key={item.id}
                 onClick={() => handleMovies(item)}
-                to={`/movies/${item.id}`}
+                to={`/tv-series/${item.id}`}
               >
                 <span className="cards-item-icon">
                   <FaPlay className="cards-item-iconplay" />
                 </span>
                 <div className="cards-item-detail">
                   <img
-                    src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
                     alt="poster"
                     className="cards-item-image"
                   />
@@ -58,4 +58,4 @@ const MoviesCards = ({
   );
 };
 
-export default MoviesCards;
+export default TVCards;

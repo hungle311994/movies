@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useScrollY } from "../../hooks/useScrollY";
+import { MdAccountCircle } from "react-icons/md";
+import { AuthContext } from "../../contexts/AuthContext";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const Navbar = () => {
   const [scrollY] = useScrollY();
+  const { user, logOut } = useContext(AuthContext);
+  const [activeLogout, setActiveLogout] = useState(false);
+  const handleLogout = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div
@@ -40,6 +52,33 @@ const Navbar = () => {
           >
             TV Series
           </NavLink>
+
+          {user?.email ? (
+            <div className="navbar-navigate-user">
+              <img
+                src={user.photoURL}
+                alt="avatar"
+                className="navbar-navigate-image"
+                onClick={() => setActiveLogout((prev) => !prev)}
+              />
+              <button
+                className={`navbar-navigate-logout ${
+                  !activeLogout ? "inActiveLogout" : "activeLogout"
+                }`}
+                onClick={handleLogout}
+              >
+                <AiOutlineLogout />
+                Log out
+              </button>
+            </div>
+          ) : (
+            <NavLink
+              to="/account"
+              className="navbar-navigate-account text text-medium"
+            >
+              <MdAccountCircle className="navbar-navigate-account-icon" />
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

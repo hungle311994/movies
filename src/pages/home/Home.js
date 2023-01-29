@@ -11,7 +11,7 @@ import {
   actionFetchTopRatedTVListAPI,
   actionFetchTrendingTVListAPI,
 } from "../../redux/actions/tvAction";
-import Row from "../row/Row";
+import Row from "../../components/row/Row";
 
 const Home = () => {
   const dispatch = useDispatch();

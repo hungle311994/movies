@@ -44,14 +44,14 @@
         color: $dark;
         font-size: 12px;
         background-color: #151514;
-        border: 1px solid $secondary;
+        border: 1px solid $dark-1;
         transition: all 0.3s linear;
         &:placeholder-shown {
           font-family: "Poppins", sans-serif;
         }
         &:focus {
           outline: none;
-          box-shadow: 1px 1px 10px 2px $secondary;
+          border: 1px solid $secondary;
         }
       }
       &-btn {

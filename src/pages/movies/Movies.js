@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import MoviesCards from "../../components/movies/MoviesCards";
+import MoviesCards from "../../pages/movies/MoviesCards";
 import Search from "../../components/search/Search";
 import {
   actionFetchPopularMoviesListAPI,
@@ -53,7 +53,6 @@ const Movies = () => {
           alt="poster-background"
           className="movies-background-image"
         />
-        <div className="movies-background-bottom"></div>
       </div>
       <div className="movies-content">
         <div className="movies-content-wrapper">

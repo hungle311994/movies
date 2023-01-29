@@ -24,7 +24,7 @@ const ModalSeasons = () => {
           <img
             src={
               seasonsTVItem.poster_path !== null
-                ? `https://image.tmdb.org/t/p/original/${seasonsTVItem.poster_path}`
+                ? `https://image.tmdb.org/t/p/original${seasonsTVItem.poster_path}`
                 : require("../../assets/PictureNotAvailable.png")
             }
             alt="poster_path"

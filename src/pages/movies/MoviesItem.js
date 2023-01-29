@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { HiOutlineLink } from "react-icons/hi";
 import { useSelector } from "react-redux";
-import Row from "../row/Row";
+import Row from "../../components/row/Row";
 import { ToastContainer, toast } from "react-toastify";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import Reviews from "../../components/reviews/Reviews";
 import Trailer from "../../components/trailer/Trailer";
 import Credits from "../../components/credits/Credits";
-import TableDetail from "../table-detail-desc/TableDetail";
-import PosterRating from "../poster-rating/PosterRating";
+import TableDetail from "../../components/table-detail-desc/TableDetail";
+import PosterRating from "../../components/poster-rating/PosterRating";
 
 const MoviesItem = () => {
   const state = useSelector((state) => state);
@@ -35,8 +35,8 @@ const MoviesItem = () => {
         <img
           src={
             moviesDetail.backdrop_path !== null
-              ? `https://image.tmdb.org/t/p/original/${moviesDetail.backdrop_path}`
-              : `https://image.tmdb.org/t/p/original/${moviesDetail.poster_path}`
+              ? `https://image.tmdb.org/t/p/original${moviesDetail.backdrop_path}`
+              : `https://image.tmdb.org/t/p/original${moviesDetail.poster_path}`
           }
           alt="backdrop_path"
           className="item-poster-image"

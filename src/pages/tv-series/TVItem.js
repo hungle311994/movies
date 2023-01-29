@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineLink } from "react-icons/hi";
 import { useSelector } from "react-redux";
-import Row from "../row/Row";
+import Row from "../../components/row/Row";
 import { ToastContainer, toast } from "react-toastify";
-import Reviews from "../reviews/Reviews";
-import Trailer from "../trailer/Trailer";
-import Credits from "../credits/Credits";
-import TableDetail from "../table-detail-desc/TableDetail";
-import Seasons from "../seasons/Seasons";
-import PosterRating from "../poster-rating/PosterRating";
+import Reviews from "../../components/reviews/Reviews";
+import Trailer from "../../components/trailer/Trailer";
+import Credits from "../../components/credits/Credits";
+import TableDetail from "../../components/table-detail-desc/TableDetail";
+import Seasons from "../../components/seasons/Seasons";
+import PosterRating from "../../components/poster-rating/PosterRating";
 
 const TVItem = () => {
   const state = useSelector((state) => state);
@@ -37,8 +37,8 @@ const TVItem = () => {
         <img
           src={
             tvDetail.backdrop_path !== null
-              ? `https://image.tmdb.org/t/p/original/${tvDetail.backdrop_path}`
-              : `https://image.tmdb.org/t/p/original/${tvDetail.poster_path}`
+              ? `https://image.tmdb.org/t/p/original${tvDetail.backdrop_path}`
+              : `https://image.tmdb.org/t/p/original${tvDetail.poster_path}`
           }
           alt="backdrop_path"
           className="item-poster-image"

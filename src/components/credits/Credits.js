@@ -12,7 +12,7 @@ const Credits = ({ detail, credits }) => {
               <img
                 src={
                   item.profile_path !== null
-                    ? `https://image.tmdb.org/t/p/original/${item.profile_path}`
+                    ? `https://image.tmdb.org/t/p/original${item.profile_path}`
                     : require("../../assets/PictureNotAvailable.png")
                 }
                 alt="profile_path"

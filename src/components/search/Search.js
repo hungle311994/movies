@@ -39,7 +39,7 @@ const Search = ({
                         src={
                           item.poster_path !== null ||
                           item.backdrop_path !== null
-                            ? `https://image.tmdb.org/t/p/original/${
+                            ? `https://image.tmdb.org/t/p/original${
                                 item.poster_path || item.backdrop_path
                               }`
                             : require("../../assets/PictureNotAvailable.png")

@@ -1,4 +1,4 @@
-.movies {
+.tv {
   width: 100%;
   height: 100%;
   background-color: $primary;
@@ -8,7 +8,9 @@
     height: 300px;
     overflow: hidden;
     position: relative;
-    &-bottom {
+    &:before {
+      content: "";
+      position: absolute;
       width: 100%;
       height: 300%;
       position: absolute;

@@ -2,9 +2,10 @@
 @import "./scss/mixin";
 @import "react-toastify/dist/ReactToastify.css";
 @import "./components/navbar/navbar";
-@import "./components/home/home";
-@import "./components/movies/movies";
-@import "./components/tv-series/tv-series";
+@import "./pages/home/home";
+@import "./pages/movies/movies";
+@import "./pages/tv-series/tv-series";
+@import "./pages/account/account";
 @import "./components/row/row";
 @import "./scss/cards";
 @import "./scss/items";
@@ -34,8 +35,8 @@ body {
   position: relative;
   user-select: none;
   &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
   }
   &::-webkit-scrollbar-thumb {
     background-image: linear-gradient(to bottom, $secondary, $secondary-1);

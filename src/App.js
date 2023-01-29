@@ -5,13 +5,16 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import { useScrollY } from "./hooks/useScrollY";
 import ModalSeasons from "./components/modal/ModalSeasons";
 import Footer from "./components/footer/Footer";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 function App() {
   const [scollY] = useScrollY();
   return (
     <div className="App">
-      <Navbar />
-      {routes}
+      <AuthContextProvider>
+        <Navbar />
+        {routes}
+      </AuthContextProvider>
       {scollY >= 100 && (
         <BsFillArrowUpCircleFill
           className="gotop"

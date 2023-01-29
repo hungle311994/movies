@@ -60,7 +60,7 @@ const Row = ({ list, title, path }) => {
                   <img
                     src={
                       item.poster_path !== null
-                        ? `https://image.tmdb.org/t/p/original/${item.poster_path}`
+                        ? `https://image.tmdb.org/t/p/original${item.poster_path}`
                         : require("../../assets/PictureNotAvailable.png")
                     }
                     alt="poster"

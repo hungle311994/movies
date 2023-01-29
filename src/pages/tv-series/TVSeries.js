@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import TVCards from "./TVCards";
-import Search from "../search/Search";
+import Search from "../../components/search/Search";
 import {
   actionFetchPopularTVListAPI,
   actionGetSimilarTVAPI,
@@ -53,7 +53,6 @@ const TVSeries = () => {
           alt="poster-background"
           className="tv-background-image"
         />
-        <div className="tv-background-bottom"></div>
       </div>
       <div className="tv-content">
         <div className="tv-content-wrapper">
