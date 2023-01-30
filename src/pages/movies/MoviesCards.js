@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { CiStar } from "react-icons/ci";
-import { FaPlay } from "react-icons/fa";
+import { HiStar } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/pagination/Pagination";
 
@@ -28,23 +27,18 @@ const MoviesCards = ({
                 onClick={() => handleMovies(item)}
                 to={`/movies/${item.id}`}
               >
-                <span className="cards-item-icon">
-                  <FaPlay className="cards-item-iconplay" />
+                <img
+                  src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                  alt="poster"
+                  className="cards-item-image"
+                />
+                <span className="cards-item-title">
+                  {item.title || item.name}
                 </span>
-                <div className="cards-item-detail">
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-                    alt="poster"
-                    className="cards-item-image"
-                  />
-                  <span className="cards-item-title">
-                    {item.title || item.name}
-                  </span>
-                  <span className="cards-item-rating">
-                    <CiStar style={{ fontSize: "16px" }} />
-                    {item.vote_average.toFixed(1)}
-                  </span>
-                </div>
+                <span className="cards-item-rating">
+                  <HiStar style={{ fontSize: "16px" }} />
+                  <span>{item.vote_average.toFixed(1)}</span>
+                </span>
               </Link>
             ))}
         </div>

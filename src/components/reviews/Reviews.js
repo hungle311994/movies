@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { getDate } from "../../utils/getDate";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 
 const Reviews = ({ detail }) => {
   const [message, setMessage] = useState("");
-  const { user } = useContext(AuthContext);
+  const currrentUser = useAuth();
+
   const reviewList = localStorage.getItem("reviewList")
     ? JSON.parse(localStorage.getItem("reviewList"))
     : [];
@@ -66,13 +67,18 @@ const Reviews = ({ detail }) => {
             <div className="item-reviews-contents-item" key={idx}>
               <div className="item-reviews-contents-item-detail">
                 <img
-                  src={user?.email && user.photoURL}
+                  src={
+                    currrentUser?.email && currrentUser.photoURL !== null
+                      ? currrentUser.photoURL
+                      : "https://source.unsplash.com/random"
+                  }
                   alt="avatar_path"
                   className="item-reviews-contents-item-detail-image"
                 />
+
                 <div className="item-reviews-contents-item-detail-desc">
                   <span className="item-reviews-contents-item-detail-name">
-                    {user?.email && user.displayName}
+                    {currrentUser?.email}
                   </span>
                   <span className="item-reviews-contents-item-detail-createDate">
                     {getDate()}

@@ -12,7 +12,7 @@ import {
   actionTVVideosAPI,
 } from "../../redux/actions/tvAction";
 
-const TVSeries = () => {
+const TVShows = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const popularTVList = state.tvRedux.popularTVList;
@@ -56,7 +56,7 @@ const TVSeries = () => {
       </div>
       <div className="tv-content">
         <div className="tv-content-wrapper">
-          <h2 className="tv-content-heading text text-normal">TV Series</h2>
+          <h2 className="tv-content-heading text text-normal">TV Shows</h2>
           <div className="tv-content-search">
             <input
               type="text"
@@ -75,7 +75,7 @@ const TVSeries = () => {
                 onHandlePrevPage={onHandlePrevPage}
                 onHandleNextPage={onHandleNextPage}
                 searchKeyWords={searchKeyWords}
-                path="tv-series"
+                path="tv-shows"
                 onHandle={onHandleTV}
               />
             ) : (
@@ -94,4 +94,4 @@ const TVSeries = () => {
   );
 };
 
-export default TVSeries;
+export default TVShows;

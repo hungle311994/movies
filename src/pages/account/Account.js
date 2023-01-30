@@ -2,11 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { ToastContainer, toast } from "react-toastify";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useRef } from "react";
+import { googleLogin, logIn, signUp } from "../../firebase/firebase";
+import { toast, ToastContainer } from "react-toastify";
+import { useAuth } from "../../hooks/useAuth";
 
 const Account = () => {
   const navigate = useNavigate();
@@ -14,10 +15,10 @@ const Account = () => {
   const [accountActive, setAccountActive] = useState("Login");
   const [showPassLogin, setShowPassLogin] = useState(false);
   const [showPassSignup, setShowPassSignup] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { googleLogin, user } = useContext(AuthContext);
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const currrentUser = useAuth();
 
   const handleLoginTab = (value) => {
     setAccount(true);
@@ -27,15 +28,23 @@ const Account = () => {
     setAccount(false);
     setAccountActive(value);
   };
-  const handleLogin = () => {
-    toast.success("Login success !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
+  const handleLogin = async () => {
+    try {
+      await logIn(emailRef.current.value, passwordRef.current.value);
+    } catch (error) {
+      toast.warning("Email or password was wrong !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
-  const handleSignup = () => {
-    toast.success("Create new account success !", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
+  const handleSignup = async () => {
+    try {
+      await signUp(emailRef.current.value, passwordRef.current.value);
+    } catch (error) {
+      toast.warning("Email already in use !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
   const handleGoogleLogin = async () => {
     try {
@@ -46,10 +55,10 @@ const Account = () => {
   };
 
   useEffect(() => {
-    if (user !== null) {
+    if (currrentUser) {
       navigate("/");
     }
-  }, [user, navigate]);
+  }, [currrentUser, navigate]);
 
   return (
     <div className="account">
@@ -72,6 +81,7 @@ const Account = () => {
             >
               Login
             </button>
+            <ToastContainer />
 
             <button
               className={`account-content-signupBtn ${
@@ -81,6 +91,7 @@ const Account = () => {
             >
               Sign up
             </button>
+            <ToastContainer />
           </div>
 
           <div className="account-content-detail">
@@ -92,8 +103,7 @@ const Account = () => {
                     className="account-content-input"
                     type="email"
                     placeholder="example@mail.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    ref={emailRef}
                   />
                 </div>
 
@@ -102,9 +112,8 @@ const Account = () => {
                   <input
                     className="account-content-input"
                     type={showPassLogin ? "text" : "password"}
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="at least 6 characters"
+                    ref={passwordRef}
                   />
                   {showPassLogin ? (
                     <AiOutlineEyeInvisible
@@ -122,7 +131,6 @@ const Account = () => {
                 <button className="account-content-btn" onClick={handleLogin}>
                   Login
                 </button>
-                <ToastContainer />
 
                 <button
                   className="account-content-google"
@@ -135,24 +143,12 @@ const Account = () => {
             ) : (
               <div className="account-content-signup">
                 <div className="account-content-signup-item">
-                  <label className="account-content-title">Name</label>
-                  <input
-                    className="account-content-input"
-                    type="text"
-                    placeholder="James Bond"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-
-                <div className="account-content-signup-item">
                   <label className="account-content-title">Email</label>
                   <input
                     className="account-content-input"
                     type="email"
                     placeholder="example@mail.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    ref={emailRef}
                   />
                 </div>
 
@@ -161,9 +157,8 @@ const Account = () => {
                   <input
                     className="account-content-input"
                     type={showPassSignup ? "text" : "password"}
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="at least 6 characters"
+                    ref={passwordRef}
                   />
                   {showPassSignup ? (
                     <AiOutlineEyeInvisible
@@ -181,7 +176,6 @@ const Account = () => {
                 <button className="account-content-btn" onClick={handleSignup}>
                   Sign up
                 </button>
-                <ToastContainer />
               </div>
             )}
           </div>

@@ -64,8 +64,8 @@ const Home = () => {
       </div>
       <Row list={trendingMoviesList} title="Trending Movies" path="movies" />
       <Row list={topRatedMoviesList} title="Top Rated Movies" path="movies" />
-      <Row list={trendingTVList} title="Trending TV" path="tv-series" />
-      <Row list={topRatedTVList} title="Top Rated TV" path="tv-series" />
+      <Row list={trendingTVList} title="Trending TV" path="tv-shows" />
+      <Row list={topRatedTVList} title="Top Rated TV" path="tv-shows" />
     </div>
   );
 };

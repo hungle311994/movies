@@ -64,6 +64,7 @@ const Movies = () => {
               placeholder="Search your interesting..."
               onChange={(e) => setSearchKeyWords(e.target.value)}
               value={searchKeyWords}
+              autoComplete="off"
             />
             <HiOutlineSearch className="movies-content-search-icon"></HiOutlineSearch>
           </div>

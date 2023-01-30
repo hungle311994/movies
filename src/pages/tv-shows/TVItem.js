@@ -106,7 +106,7 @@ const TVItem = () => {
       <Row
         list={similarTVList}
         title="You might also like"
-        path="tv-series"
+        path="tv-shows"
         className="item-similar"
       />
     </div>

@@ -31,6 +31,18 @@
     padding: 300px 50px 0;
     display: flex;
     gap: 0 30px;
+    @include mobile {
+      flex-direction: column;
+      padding: 300px 10px 0;
+    }
+    &-posterRating {
+      &-image {
+        @include mobile {
+          width: 100%;
+          height: 300px;
+        }
+      }
+    }
     &-detail {
       width: 100%;
       max-width: 708px;

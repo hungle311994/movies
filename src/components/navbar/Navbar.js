@@ -1,14 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useScrollY } from "../../hooks/useScrollY";
 import { MdAccountCircle } from "react-icons/md";
-import { AuthContext } from "../../contexts/AuthContext";
 import { AiOutlineLogout } from "react-icons/ai";
+import { useAuth } from "../../hooks/useAuth";
+import { logOut } from "../../firebase/firebase";
 
 const Navbar = () => {
   const [scrollY] = useScrollY();
-  const { user, logOut } = useContext(AuthContext);
   const [activeLogout, setActiveLogout] = useState(false);
+  const currrentUser = useAuth();
+
   const handleLogout = async () => {
     try {
       await logOut();
@@ -47,23 +49,27 @@ const Navbar = () => {
             Movies
           </NavLink>
           <NavLink
-            to="/tv-series"
+            to="/tv-shows"
             className="navbar-navigate-text text text-medium"
           >
-            TV Series
+            TV shows
           </NavLink>
 
-          {user?.email ? (
+          {currrentUser?.email ? (
             <div className="navbar-navigate-user">
               <img
-                src={user.photoURL}
+                src={
+                  currrentUser.photoURL !== null
+                    ? currrentUser.photoURL
+                    : "https://source.unsplash.com/random"
+                }
                 alt="avatar"
                 className="navbar-navigate-image"
                 onClick={() => setActiveLogout((prev) => !prev)}
               />
               <button
                 className={`navbar-navigate-logout ${
-                  !activeLogout ? "inActiveLogout" : "activeLogout"
+                  activeLogout === false ? "inActiveLogout" : "activeLogout"
                 }`}
                 onClick={handleLogout}
               >
