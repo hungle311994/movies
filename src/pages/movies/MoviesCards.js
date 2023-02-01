@@ -4,13 +4,7 @@ import { HiStar } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/pagination/Pagination";
 
-const MoviesCards = ({
-  list,
-  onHandlePrevPage,
-  onHandleNextPage,
-  page,
-  onHandleMovies,
-}) => {
+const MoviesCards = ({ list, onHandleMovies, onHandlePageClick }) => {
   const handleMovies = (item) => {
     onHandleMovies(item);
   };
@@ -42,11 +36,8 @@ const MoviesCards = ({
               </Link>
             ))}
         </div>
-        <Pagination
-          onHandlePrevPage={onHandlePrevPage}
-          onHandleNextPage={onHandleNextPage}
-          page={page}
-        />
+
+        <Pagination onHandlePageClick={onHandlePageClick} />
       </div>
     </div>
   );

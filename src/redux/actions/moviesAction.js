@@ -69,7 +69,6 @@ export const actionSearchMoviesListAPI = (keyWords, page) => {
   return async (dispatch) => {
     const res = await getSearchMoviesList(keyWords, page);
     dispatch(actionSearchMoviesDetail(res.data.results));
-    // console.log(res.data.results);
   };
 };
 

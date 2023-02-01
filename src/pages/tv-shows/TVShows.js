@@ -21,19 +21,11 @@ const TVShows = () => {
   const [list, setList] = useState([]);
   const [searchList, setSearchList] = useState([]);
   const [searchKeyWords, setSearchKeyWords] = useState("");
-  const onHandlePrevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-      setList(popularTVList);
-      setSearchList(tvSearchList);
-    }
-  };
-  const onHandleNextPage = () => {
-    if (page < 500) {
-      setPage(page + 1);
-      setList(popularTVList);
-      setSearchList(tvSearchList);
-    }
+
+  const onHandlePageClick = (e) => {
+    setList(popularTVList);
+    setSearchList(tvSearchList);
+    setPage(e.selected + 1);
   };
   const onHandleTV = (item) => {
     dispatch(actionGetTVDetailListAPI(item.id));
@@ -41,10 +33,12 @@ const TVShows = () => {
     dispatch(actionTVVideosAPI(item.id));
     dispatch(actionTVCreditsAPI(item.id));
   };
+
   useEffect(() => {
     dispatch(actionFetchPopularTVListAPI(page));
     dispatch(actionSearchTVListAPI(searchKeyWords, page));
   }, [dispatch, page, searchKeyWords]);
+
   return (
     <div className="tv">
       <div className="tv-background">
@@ -71,20 +65,16 @@ const TVShows = () => {
             {tvSearchList.length > 0 || searchKeyWords.length > 0 ? (
               <Search
                 searchList={searchList ? tvSearchList : searchList}
-                page={page}
-                onHandlePrevPage={onHandlePrevPage}
-                onHandleNextPage={onHandleNextPage}
                 searchKeyWords={searchKeyWords}
                 path="tv-shows"
                 onHandle={onHandleTV}
+                onHandlePageClick={onHandlePageClick}
               />
             ) : (
               <TVCards
                 list={list ? popularTVList : list}
-                onHandlePrevPage={onHandlePrevPage}
-                onHandleNextPage={onHandleNextPage}
-                page={page}
                 onHandleTV={onHandleTV}
+                onHandlePageClick={onHandlePageClick}
               />
             )}
           </div>

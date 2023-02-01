@@ -74,7 +74,7 @@ const Account = () => {
         <div className="account-content-wrapper">
           <div className="account-content-heading">
             <button
-              className={`account-content-loginBtn ${
+              className={`account-content-loginTab ${
                 accountActive === "Login" ? "accountActive" : ""
               }`}
               onClick={() => handleLoginTab("Login")}
@@ -84,7 +84,7 @@ const Account = () => {
             <ToastContainer />
 
             <button
-              className={`account-content-signupBtn ${
+              className={`account-content-signupTab ${
                 accountActive === "Signup" ? "accountActive" : ""
               }`}
               onClick={() => handleSignupTab("Signup")}
@@ -94,91 +94,89 @@ const Account = () => {
             <ToastContainer />
           </div>
 
-          <div className="account-content-detail">
-            {account ? (
-              <div className="account-content-login">
-                <div className="account-content-login-item">
-                  <label className="account-content-title">Email</label>
-                  <input
-                    className="account-content-input"
-                    type="email"
-                    placeholder="example@mail.com"
-                    ref={emailRef}
-                  />
-                </div>
-
-                <div className="account-content-login-item">
-                  <label className="account-content-title">Password</label>
-                  <input
-                    className="account-content-input"
-                    type={showPassLogin ? "text" : "password"}
-                    placeholder="at least 6 characters"
-                    ref={passwordRef}
-                  />
-                  {showPassLogin ? (
-                    <AiOutlineEyeInvisible
-                      className="account-content-showPass"
-                      onClick={() => setShowPassLogin((prev) => !prev)}
-                    />
-                  ) : (
-                    <AiOutlineEye
-                      className="account-content-showPass"
-                      onClick={() => setShowPassLogin((prev) => !prev)}
-                    />
-                  )}
-                </div>
-
-                <button className="account-content-btn" onClick={handleLogin}>
-                  Login
-                </button>
-
-                <button
-                  className="account-content-google"
-                  onClick={handleGoogleLogin}
-                >
-                  <FcGoogle />
-                  <span>Login with Google</span>
-                </button>
+          {account ? (
+            <div className="account-content-detail">
+              <div className="account-content-item">
+                <label className="account-content-title">Email</label>
+                <input
+                  className="account-content-input"
+                  type="email"
+                  placeholder="example@mail.com"
+                  ref={emailRef}
+                />
               </div>
-            ) : (
-              <div className="account-content-signup">
-                <div className="account-content-signup-item">
-                  <label className="account-content-title">Email</label>
-                  <input
-                    className="account-content-input"
-                    type="email"
-                    placeholder="example@mail.com"
-                    ref={emailRef}
-                  />
-                </div>
 
-                <div className="account-content-signup-item">
-                  <label className="account-content-title">Password</label>
-                  <input
-                    className="account-content-input"
-                    type={showPassSignup ? "text" : "password"}
-                    placeholder="at least 6 characters"
-                    ref={passwordRef}
+              <div className="account-content-item">
+                <label className="account-content-title">Password</label>
+                <input
+                  className="account-content-input"
+                  type={showPassLogin ? "text" : "password"}
+                  placeholder="at least 6 characters"
+                  ref={passwordRef}
+                />
+                {showPassLogin ? (
+                  <AiOutlineEyeInvisible
+                    className="account-content-showPass"
+                    onClick={() => setShowPassLogin((prev) => !prev)}
                   />
-                  {showPassSignup ? (
-                    <AiOutlineEyeInvisible
-                      className="account-content-showPass"
-                      onClick={() => setShowPassSignup((prev) => !prev)}
-                    />
-                  ) : (
-                    <AiOutlineEye
-                      className="account-content-showPass"
-                      onClick={() => setShowPassSignup((prev) => !prev)}
-                    />
-                  )}
-                </div>
-
-                <button className="account-content-btn" onClick={handleSignup}>
-                  Sign up
-                </button>
+                ) : (
+                  <AiOutlineEye
+                    className="account-content-showPass"
+                    onClick={() => setShowPassLogin((prev) => !prev)}
+                  />
+                )}
               </div>
-            )}
-          </div>
+
+              <button className="account-content-btn" onClick={handleLogin}>
+                Login
+              </button>
+
+              <button
+                className="account-content-google"
+                onClick={handleGoogleLogin}
+              >
+                <FcGoogle />
+                <span>Login with Google</span>
+              </button>
+            </div>
+          ) : (
+            <div className="account-content-detail">
+              <div className="account-content-item">
+                <label className="account-content-title">Email</label>
+                <input
+                  className="account-content-input"
+                  type="email"
+                  placeholder="example@mail.com"
+                  ref={emailRef}
+                />
+              </div>
+
+              <div className="account-content-item">
+                <label className="account-content-title">Password</label>
+                <input
+                  className="account-content-input"
+                  type={showPassSignup ? "text" : "password"}
+                  placeholder="at least 6 characters"
+                  ref={passwordRef}
+                />
+                {showPassSignup ? (
+                  <AiOutlineEyeInvisible
+                    className="account-content-showPass"
+                    onClick={() => setShowPassSignup((prev) => !prev)}
+                  />
+                ) : (
+                  <AiOutlineEye
+                    className="account-content-showPass"
+                    onClick={() => setShowPassSignup((prev) => !prev)}
+                  />
+                )}
+              </div>
+
+              <button className="account-content-btn" onClick={handleSignup}>
+                Sign up
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

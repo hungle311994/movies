@@ -1,18 +1,15 @@
 import React from "react";
-import { FaPlay } from "react-icons/fa";
-import { CiStar } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
 import Error from "../error/Error";
+import { HiStar } from "react-icons/hi";
 
 const Search = ({
-  searchList,
-  onHandlePrevPage,
-  onHandleNextPage,
-  page,
   path,
+  searchList,
   searchKeyWords,
   onHandle,
+  onHandlePageClick,
 }) => {
   const handleMovies = (item) => {
     onHandle(item);
@@ -31,38 +28,29 @@ const Search = ({
                     onClick={() => handleMovies(item)}
                     to={`/${path}/${item.id}`}
                   >
-                    <span className="search-item-icon">
-                      <FaPlay className="search-item-iconplay" />
+                    <img
+                      src={
+                        item.poster_path !== null || item.backdrop_path !== null
+                          ? `https://image.tmdb.org/t/p/original${
+                              item.poster_path || item.backdrop_path
+                            }`
+                          : require("../../assets/PictureNotAvailable.png")
+                      }
+                      alt="poster"
+                      className="search-item-image"
+                    />
+                    <span className="search-item-title">
+                      {item.title || item.name}
                     </span>
-                    <div className="search-item-detail">
-                      <img
-                        src={
-                          item.poster_path !== null ||
-                          item.backdrop_path !== null
-                            ? `https://image.tmdb.org/t/p/original${
-                                item.poster_path || item.backdrop_path
-                              }`
-                            : require("../../assets/PictureNotAvailable.png")
-                        }
-                        alt="poster"
-                        className="search-item-image"
-                      />
-                      <span className="search-item-title">
-                        {item.title || item.name}
-                      </span>
-                      <span className="search-item-rating">
-                        <CiStar style={{ fontSize: "16px" }} />
-                        {item.vote_average.toFixed(1)}
-                      </span>
-                    </div>
+                    <span className="search-item-rating">
+                      <HiStar style={{ fontSize: "16px" }} />
+                      <span>{item.vote_average.toFixed(1)}</span>
+                    </span>
                   </Link>
                 ))}
             </div>
-            <Pagination
-              onHandlePrevPage={onHandlePrevPage}
-              onHandleNextPage={onHandleNextPage}
-              page={page}
-            />
+
+            <Pagination onHandlePageClick={onHandlePageClick} />
           </>
         ) : (
           <Error searchKeyWords={searchKeyWords} />

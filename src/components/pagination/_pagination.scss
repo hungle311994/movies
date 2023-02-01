@@ -5,44 +5,20 @@
   align-items: center;
   margin: 30px 0 0;
   column-gap: 20px;
-  &-left,
-  &-right {
-    height: 37px;
-    border: 1px solid;
-    border-radius: 100rem;
-    padding: 0 20px;
-    color: $dark;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 7px;
-    transition: all 0.25s linear;
-    &-arrow {
-      transition: all 0.25s linear;
-    }
-    &:hover {
-      background-color: #fff;
-      color: $secondary;
-    }
-    &:hover &-detail {
-      color: $secondary;
+  list-style: none;
+  color: $dark;
+  font-weight: 300;
+  &-item {
+    :hover {
+      color: #fff;
     }
   }
-  &-right {
-    &:hover &-arrow {
-      transform: translateX(7px);
-      color: $secondary;
-    }
-  }
-  &-left {
-    &:hover &-arrow {
-      transform: translateX(-7px);
-      color: $secondary;
-    }
-  }
-  &-text {
-    font-size: 20px;
-    color: $dark;
+  &-active {
+    min-width: 30px;
+    text-align: center;
+    color: #fff;
+    padding: 2px 4px;
+    border-radius: 7px;
+    background-image: $gradient;
   }
 }

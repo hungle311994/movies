@@ -1,29 +1,27 @@
 import React from "react";
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import ReactPaginate from "react-paginate";
 
-const Pagination = ({ onHandlePrevPage, onHandleNextPage, page }) => {
-  const handlePrevPage = () => {
-    onHandlePrevPage();
-  };
-  const handleNextPage = () => {
-    onHandleNextPage();
+const Pagination = ({ onHandlePageClick }) => {
+  const handlePageClick = (e) => {
+    onHandlePageClick(e);
   };
 
   return (
-    <>
-      <div className="panigation text text-small">
-        <span className="panigation-left" onClick={handlePrevPage}>
-          <SlArrowLeft className="panigation-left-arrow" />
-          Prev
-        </span>
-
-        <span className="panigation-text">{page}</span>
-        <span className="panigation-right" onClick={handleNextPage}>
-          Next
-          <SlArrowRight className="panigation-right-arrow" />
-        </span>
-      </div>
-    </>
+    <ReactPaginate
+      pageCount={500}
+      breakLabel="..."
+      nextLabel="Next >"
+      previousLabel="< Prev"
+      pageRangeDisplayed={2}
+      marginPagesDisplayed={2}
+      onPageChange={handlePageClick}
+      containerClassName="panigation"
+      previousClassName="panigation-item"
+      nextClassName="panigation-item"
+      pageClassName="panigation-item"
+      breakClassName="panigation-item"
+      activeClassName="panigation-active"
+    />
   );
 };
 

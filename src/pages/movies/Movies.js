@@ -21,19 +21,12 @@ const Movies = () => {
   const [list, setList] = useState([]);
   const [searchList, setSearchList] = useState([]);
   const [searchKeyWords, setSearchKeyWords] = useState("");
-  const onHandlePrevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-      setList(popularMoviesList);
-      setSearchList(moviesSearchList);
-    }
-  };
-  const onHandleNextPage = () => {
-    if (page < 500) {
-      setPage(page + 1);
-      setList(popularMoviesList);
-      setSearchList(moviesSearchList);
-    }
+
+  const onHandlePageClick = (e) => {
+    console.log(e.selected + 1);
+    setList(popularMoviesList);
+    setSearchList(moviesSearchList);
+    setPage(e.selected + 1);
   };
   const onHandleMovies = (item) => {
     dispatch(actionGetMoviesDetailListAPI(item.id));
@@ -41,10 +34,12 @@ const Movies = () => {
     dispatch(actionMoviesVideosAPI(item.id));
     dispatch(actionMoviesCreditsAPI(item.id));
   };
+
   useEffect(() => {
     dispatch(actionFetchPopularMoviesListAPI(page));
     dispatch(actionSearchMoviesListAPI(searchKeyWords, page));
   }, [dispatch, page, searchKeyWords]);
+
   return (
     <div className="movies">
       <div className="movies-background">
@@ -64,7 +59,6 @@ const Movies = () => {
               placeholder="Search your interesting..."
               onChange={(e) => setSearchKeyWords(e.target.value)}
               value={searchKeyWords}
-              autoComplete="off"
             />
             <HiOutlineSearch className="movies-content-search-icon"></HiOutlineSearch>
           </div>
@@ -72,20 +66,16 @@ const Movies = () => {
             {moviesSearchList.length > 0 || searchKeyWords.length > 0 ? (
               <Search
                 searchList={searchList ? moviesSearchList : searchList}
-                page={page}
-                onHandlePrevPage={onHandlePrevPage}
-                onHandleNextPage={onHandleNextPage}
                 searchKeyWords={searchKeyWords}
                 path="movies"
                 onHandle={onHandleMovies}
+                onHandlePageClick={onHandlePageClick}
               />
             ) : (
               <MoviesCards
                 list={list ? popularMoviesList : list}
-                onHandlePrevPage={onHandlePrevPage}
-                onHandleNextPage={onHandleNextPage}
-                page={page}
                 onHandleMovies={onHandleMovies}
+                onHandlePageClick={onHandlePageClick}
               />
             )}
           </div>
