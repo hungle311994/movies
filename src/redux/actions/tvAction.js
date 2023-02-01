@@ -106,9 +106,9 @@ export const actionSetSeasonsTV = (seaesonsTV) => {
 };
 
 // Search TV Detail
-export const actionSearchTVListAPI = (keyWords, page) => {
+export const actionSearchTVListAPI = (page, searchKeyWords) => {
   return async (dispatch) => {
-    const res = await getSearchTVList(keyWords, page);
+    const res = await getSearchTVList(page, searchKeyWords);
     dispatch(actionSearchTVDetail(res.data.results));
   };
 };

@@ -29,12 +29,14 @@ const Row = ({ list, title, path }) => {
     dispatch(actionTVVideosAPI(item.id));
     dispatch(actionTVCreditsAPI(item.id));
   };
+
   return (
     <div className="row">
       <div className="row-container">
         <div className="row-heading">
           <h3 className="row-title text-normal">{title}</h3>
         </div>
+
         <div
           className="row-items"
           style={{
@@ -54,9 +56,8 @@ const Row = ({ list, title, path }) => {
               >
                 <img
                   src={
-                    item.poster_path !== null
-                      ? `https://image.tmdb.org/t/p/original${item.poster_path}`
-                      : require("../../assets/PictureNotAvailable.png")
+                    `https://image.tmdb.org/t/p/original${item.poster_path}` ||
+                    require("../../assets/PictureNotAvailable.png")
                   }
                   alt="poster"
                   className="row-item-image"
@@ -66,7 +67,7 @@ const Row = ({ list, title, path }) => {
                 </span>
                 <span className="row-item-rating">
                   <HiStar style={{ fontSize: "16px" }} />
-                  <span>{item.vote_average.toFixed(1)}</span>
+                  <span>{Math.floor(item.vote_average * 10) / 10}</span>
                 </span>
               </Link>
             ))}

@@ -20,7 +20,7 @@ export const getPopularMovies = (page) => {
   );
 };
 
-export const getSearchMoviesList = (keyWords, page) => {
+export const getSearchMoviesList = (page, keyWords) => {
   return api(
     "GET",
     `search/movie?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${keyWords}`,

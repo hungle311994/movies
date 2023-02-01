@@ -22,7 +22,11 @@ const TVCards = ({ list, onHandleTV, onHandlePageClick }) => {
                 to={`/tv-shows/${item.id}`}
               >
                 <img
-                  src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                  src={
+                    item.poster_path !== null && item.poster_path !== undefined
+                      ? `https://image.tmdb.org/t/p/original/${item.poster_path}`
+                      : require("../../assets/PictureNotAvailable.png")
+                  }
                   alt="poster"
                   className="cards-item-image"
                 />
@@ -31,7 +35,7 @@ const TVCards = ({ list, onHandleTV, onHandlePageClick }) => {
                 </span>
                 <span className="cards-item-rating">
                   <HiStar style={{ fontSize: "16px" }} />
-                  <span>{item.vote_average.toFixed(1)}</span>
+                  <span>{Math.floor(item.vote_average * 10) / 10}</span>
                 </span>
               </Link>
             ))}

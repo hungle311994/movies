@@ -20,10 +20,10 @@ export const getPopularTV = (page) => {
   );
 };
 
-export const getSearchTVList = (keyWords, page) => {
+export const getSearchTVList = (page, searchKeyWords) => {
   return api(
     "GET",
-    `search/tv?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${keyWords}`,
+    `search/tv?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${searchKeyWords}`,
     null
   );
 };

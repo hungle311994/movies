@@ -65,9 +65,9 @@ export const actionFetchPopularMoviesList = (popularMoviesListAPI) => {
 };
 
 // Search Movies Detail
-export const actionSearchMoviesListAPI = (keyWords, page) => {
+export const actionSearchMoviesListAPI = (page, keyWords) => {
   return async (dispatch) => {
-    const res = await getSearchMoviesList(keyWords, page);
+    const res = await getSearchMoviesList(page, keyWords);
     dispatch(actionSearchMoviesDetail(res.data.results));
   };
 };

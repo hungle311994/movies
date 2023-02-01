@@ -37,7 +37,8 @@ const Movies = () => {
 
   useEffect(() => {
     dispatch(actionFetchPopularMoviesListAPI(page));
-    dispatch(actionSearchMoviesListAPI(searchKeyWords, page));
+    if (searchKeyWords)
+      dispatch(actionSearchMoviesListAPI(page, searchKeyWords));
   }, [dispatch, page, searchKeyWords]);
 
   return (

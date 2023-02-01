@@ -14,6 +14,7 @@ const Search = ({
   const handleMovies = (item) => {
     onHandle(item);
   };
+
   return (
     <div className="search">
       <div className="search-container">
@@ -30,10 +31,9 @@ const Search = ({
                   >
                     <img
                       src={
-                        item.poster_path !== null || item.backdrop_path !== null
-                          ? `https://image.tmdb.org/t/p/original${
-                              item.poster_path || item.backdrop_path
-                            }`
+                        item.poster_path !== null &&
+                        item.poster_path !== undefined
+                          ? `https://image.tmdb.org/t/p/original/${item.poster_path}`
                           : require("../../assets/PictureNotAvailable.png")
                       }
                       alt="poster"

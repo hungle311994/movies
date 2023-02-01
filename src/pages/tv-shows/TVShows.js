@@ -36,7 +36,7 @@ const TVShows = () => {
 
   useEffect(() => {
     dispatch(actionFetchPopularTVListAPI(page));
-    dispatch(actionSearchTVListAPI(searchKeyWords, page));
+    if (searchKeyWords) dispatch(actionSearchTVListAPI(page, searchKeyWords));
   }, [dispatch, page, searchKeyWords]);
 
   return (

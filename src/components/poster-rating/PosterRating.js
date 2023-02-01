@@ -15,7 +15,7 @@ const PosterRating = ({ detail }) => {
       <div className="item-content-posterRating-item">
         <span className="item-content-posterRating-vote">
           <span className="item-content-posterRating-numVoted">
-            {detail.vote_average}
+            {Math.floor(detail.vote_average * 10) / 10}
           </span>
           <span className="item-content-posterRating-maxVote">/ 10</span>
         </span>
