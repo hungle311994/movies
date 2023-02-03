@@ -22,6 +22,7 @@ const Home = () => {
   const topRatedMoviesList = state.moviesRedux.topRatedMoviesList;
   const trendingTVList = state.tvRedux.trendingTVList;
   const topRatedTVList = state.tvRedux.topRatedTVList;
+
   useEffect(() => {
     // Movies
     dispatch(actionFetchTrendingMoviesListAPI());

@@ -5,13 +5,11 @@ import {
   actionGetMoviesDetailListAPI,
   actionGetSimilarMoviesAPI,
   actionMoviesCreditsAPI,
-  actionMoviesVideosAPI,
 } from "../../redux/actions/moviesAction";
 import {
   actionGetSimilarTVAPI,
   actionGetTVDetailListAPI,
   actionTVCreditsAPI,
-  actionTVVideosAPI,
 } from "../../redux/actions/tvAction";
 import { HiStar } from "react-icons/hi";
 
@@ -21,12 +19,11 @@ const Row = ({ list, title, path }) => {
     // Movies
     dispatch(actionGetMoviesDetailListAPI(item.id));
     dispatch(actionGetSimilarMoviesAPI(item.id));
-    dispatch(actionMoviesVideosAPI(item.id));
     dispatch(actionMoviesCreditsAPI(item.id));
+
     // TV
     dispatch(actionGetTVDetailListAPI(item.id));
     dispatch(actionGetSimilarTVAPI(item.id));
-    dispatch(actionTVVideosAPI(item.id));
     dispatch(actionTVCreditsAPI(item.id));
   };
 

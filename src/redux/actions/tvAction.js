@@ -120,21 +120,6 @@ export const actionSearchTVDetail = (tvSearch) => {
   };
 };
 
-// Get TV Videos
-export const actionTVVideosAPI = (tvID) => {
-  return async (dispatch) => {
-    const res = await getTVVideos(tvID);
-    dispatch(actionTVVideos(res.data.results));
-  };
-};
-
-export const actionTVVideos = (tvVideos) => {
-  return {
-    type: GET_TV_VIDEOS,
-    payload: tvVideos,
-  };
-};
-
 // Get TV Credits
 export const actionTVCreditsAPI = (tvID) => {
   return async (dispatch) => {
@@ -147,5 +132,20 @@ export const actionTVCredits = (tvCredits) => {
   return {
     type: GET_TV_CREDITS,
     payload: tvCredits,
+  };
+};
+
+// Get TV Videos
+export const actionTVVideosAPI = (tvID) => {
+  return async (dispatch) => {
+    const res = await getTVVideos(tvID);
+    dispatch(actionTVVideos(res.data.results));
+  };
+};
+
+export const actionTVVideos = (tvVideos) => {
+  return {
+    type: GET_TV_VIDEOS,
+    payload: tvVideos,
   };
 };

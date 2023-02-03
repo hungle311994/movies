@@ -5,15 +5,47 @@
         width: 100%;
         height: 100%;
         margin-top: 20px;
+        position: relative;
+        overflow: hidden;
       }
       &-reactPlayerWrapper {
-        position: relative;
-        padding-top: 56.25%;
+        min-height: 400px;
+        justify-items: center;
+        // position: relative;
+        // padding-top: 56.25%;
       }
       &-reactPlayer {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 100%;
+        min-height: 400px;
+      }
+      &-prev,
+      &-next {
+        width: 35px;
+        height: 35px;
+        background-color: $dark;
+        border-radius: 100rem;
+        padding: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        opacity: 0.7;
         position: absolute;
-        top: 0;
+        &:hover {
+          background-color: #fff;
+        }
+      }
+      &-prev {
+        top: 52%;
         left: 0;
+        transform: translateX(50%);
+      }
+      &-next {
+        top: 52%;
+        right: 0;
+        transform: translateX(-50%);
       }
     }
   }

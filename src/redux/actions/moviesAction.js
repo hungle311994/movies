@@ -1,12 +1,12 @@
 import {
   getMoviesCredits,
   getMoviesDetail,
-  getMoviesVideos,
   getPopularMovies,
   getSearchMoviesList,
   getSimilarMovies,
   getTopRatedMovies,
   getTrendingMovies,
+  getMoviesVideos,
 } from "../../api/GetMovies";
 import {
   GET_POPULAR_MOVIES,
@@ -15,8 +15,8 @@ import {
   SEARCH_MOVIES_LIST,
   GET_MOVIES_DETAIL,
   GET_SIMILAR_MOVIES,
-  GET_MOVIES_VIDEOS,
   GET_MOVIES_CREDITS,
+  GET_MOVIES_VIDEOS,
 } from "../types";
 
 // Trending Movies
@@ -110,21 +110,6 @@ export const actionGetSimilarMovies = (similarMoviesList) => {
   };
 };
 
-// Get Similar Movies
-export const actionMoviesVideosAPI = (movieID) => {
-  return async (dispatch) => {
-    const res = await getMoviesVideos(movieID);
-    dispatch(actionMoviesVideos(res.data.results));
-  };
-};
-
-export const actionMoviesVideos = (moviesVideos) => {
-  return {
-    type: GET_MOVIES_VIDEOS,
-    payload: moviesVideos,
-  };
-};
-
 // Get Movies Credits
 export const actionMoviesCreditsAPI = (movieID) => {
   return async (dispatch) => {
@@ -138,5 +123,20 @@ export const actionMoviesCredits = (moviesCredits) => {
   return {
     type: GET_MOVIES_CREDITS,
     payload: moviesCredits,
+  };
+};
+
+// Get Movies Videos
+export const actionMoviesVideosAPI = (movieID) => {
+  return async (dispatch) => {
+    const res = await getMoviesVideos(movieID);
+    dispatch(actionMoviesVideos(res.data.results));
+  };
+};
+
+export const actionMoviesVideos = (moviesVideos) => {
+  return {
+    type: GET_MOVIES_VIDEOS,
+    payload: moviesVideos,
   };
 };
