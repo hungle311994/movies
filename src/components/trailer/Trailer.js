@@ -1,5 +1,4 @@
 import React from "react";
-import ReactPlayer from "react-player";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import { useState } from "react";
 
@@ -12,35 +11,37 @@ const Trailer = ({ videos }) => {
   const handleNext = () => {
     if (index < videos.length - 1) setIndex(index + 1);
   };
-
-  console.log(index);
+  // console.log(index);
 
   return (
     <div className="item-content-detail-trailer">
-      <h3 className="item-content-detail-heading">Trailer</h3>
-      <div
-        className="item-content-detail-reactPlayerWrapper"
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${videos && videos.length}, 100%)`,
-          transform: `translateX(-${index * 708}px)`,
-          transition: "all 0.45s linear",
-        }}
-      >
-        {videos &&
-          videos.length > 1 &&
-          videos.map((item, idx) => (
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${item.key}`}
-              playing={false}
-              width="90%"
-              height="100%"
-              volume={1}
-              key={idx}
-              className="item-content-detail-reactPlayer"
-            />
-          ))}
-      </div>
+      {videos && videos.length >= 1 ? (
+        <>
+          <h3 className="item-content-detail-heading">Trailer</h3>
+          <div
+            className="item-content-detail-playerWrapper"
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(${videos && videos.length}, 100%)`,
+              transform: `translateX(-${index * 708}px)`,
+              transition: "all 0.35s linear",
+            }}
+          >
+            {videos &&
+              videos.length >= 1 &&
+              videos.map((item, idx) => (
+                <iframe
+                  key={idx}
+                  title={item.name}
+                  className="item-content-detail-player"
+                  src={`https://www.youtube.com/embed/${item.key}`}
+                />
+              ))}
+          </div>
+        </>
+      ) : (
+        ""
+      )}
 
       {videos.length > 1 && (
         <>

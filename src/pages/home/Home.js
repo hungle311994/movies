@@ -31,6 +31,7 @@ const Home = () => {
     dispatch(actionFetchTrendingTVListAPI());
     dispatch(actionFetchTopRatedTVListAPI());
   }, [dispatch]);
+
   return (
     <div className="home">
       <div className="home-video">
@@ -39,6 +40,7 @@ const Home = () => {
             Avatar: The Way of Water IMAX Teaser Trailer
           </h1>
         </div>
+
         <ReactPlayer
           url="https://vimeo.com/707902934"
           playing={scrollY < 500 ? true : false}
@@ -61,12 +63,14 @@ const Home = () => {
             onClick={() => setIsMute((prev) => !prev)}
           ></VscUnmute>
         )}
-        <div className="home-video-bottom"></div>
       </div>
-      <Row list={trendingMoviesList} title="Trending Movies" path="movies" />
-      <Row list={topRatedMoviesList} title="Top Rated Movies" path="movies" />
-      <Row list={trendingTVList} title="Trending TV" path="tv-shows" />
-      <Row list={topRatedTVList} title="Top Rated TV" path="tv-shows" />
+
+      <div className="home-rows">
+        <Row list={trendingMoviesList} title="Trending Movies" path="movies" />
+        <Row list={topRatedMoviesList} title="Top Rated Movies" path="movies" />
+        <Row list={trendingTVList} title="Trending TV" path="tv-shows" />
+        <Row list={topRatedTVList} title="Top Rated TV" path="tv-shows" />
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
   width: 100%;
   padding: 0 50px;
   color: #fff;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   overflow: hidden;
   @include mobile {
     padding: 0 10px;
@@ -22,7 +22,7 @@
     max-height: 430px;
     overflow-x: scroll;
     overflow-y: hidden;
-    padding: 45px 0;
+    padding: 45px 0 25px;
     &::-webkit-scrollbar {
       height: 7px;
       width: 7px;

@@ -50,6 +50,7 @@ const Movies = () => {
           className="movies-background-image"
         />
       </div>
+
       <div className="movies-content">
         <div className="movies-content-wrapper">
           <h2 className="movies-content-heading text text-normal">Movies</h2>

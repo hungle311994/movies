@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="footer-top"></div>
       <img
         src={require("../../assets/poster-footer.png")}
         alt="poster-footer"
@@ -20,6 +19,7 @@ const Footer = () => {
             />
             The Movies
           </NavLink>
+
           <ul className="footer-content-ul-level1">
             <li className="footer-content-li-level1">
               <ul className="footer-content-ul-level2">

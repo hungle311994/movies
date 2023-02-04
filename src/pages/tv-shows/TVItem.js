@@ -43,8 +43,8 @@ const TVItem = () => {
           alt="backdrop_path"
           className="item-poster-image"
         />
-        <div className="item-poster-blur"></div>
       </div>
+
       <div className="item-content">
         <PosterRating detail={tvDetail} />
         <div className="item-content-detail">
@@ -102,13 +102,17 @@ const TVItem = () => {
           <Trailer videos={tvVideos} />
         </div>
       </div>
+
       <Reviews detail={tvDetail} />
-      <Row
-        list={similarTVList}
-        title="You might also like"
-        path="tv-shows"
-        className="item-similar"
-      />
+
+      {similarTVList && similarTVList.length >= 1 && (
+        <Row
+          list={similarTVList}
+          title="You might also like"
+          path="tv-shows"
+          className="item-similar"
+        />
+      )}
     </div>
   );
 };

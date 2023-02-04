@@ -17,6 +17,7 @@ const MoviesItem = () => {
   const moviesCredits = state.moviesRedux.moviesCredits;
   const moviesVideos = state.moviesRedux.moviesVideos;
   const [like, setLike] = useState(false);
+
   const handleLike = () => {
     toast.success("Add to wishlist !", {
       position: toast.POSITION.TOP_RIGHT,
@@ -29,6 +30,7 @@ const MoviesItem = () => {
     });
     setLike(false);
   };
+
   return (
     <div className="item">
       <div className="item-poster">
@@ -41,8 +43,8 @@ const MoviesItem = () => {
           alt="backdrop_path"
           className="item-poster-image"
         />
-        <div className="item-poster-blur"></div>
       </div>
+
       <div className="item-content">
         <PosterRating detail={moviesDetail} />
         <div className="item-content-detail">
@@ -92,18 +94,23 @@ const MoviesItem = () => {
               "{moviesDetail.tagline}"
             </span>
           </div>
+
           <TableDetail detail={moviesDetail} />
           <Credits detail={moviesCredits} credits={moviesCredits} />
           <Trailer videos={moviesVideos} />
         </div>
       </div>
+
       <Reviews detail={moviesDetail} />
-      <Row
-        list={similarMoviesList}
-        title="You might also like"
-        path="movies"
-        className="item-similar"
-      />
+
+      {similarMoviesList && similarMoviesList.length >= 1 && (
+        <Row
+          list={similarMoviesList}
+          title="You might also like"
+          path="movies"
+          className="item-similar"
+        />
+      )}
     </div>
   );
 };
