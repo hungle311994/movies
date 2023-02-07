@@ -17,17 +17,24 @@ const PosterRating = ({ detail }) => {
           <span className="item-content-posterRating-numVoted">
             {Math.floor(detail.vote_average * 10) / 10}
           </span>
-          <span className="item-content-posterRating-maxVote">/ 10</span>
+          <span
+            className="item-content-posterRating-maxVote"
+            style={{
+              backgroundImage: `conic-gradient(#09abcc ${Math.floor(
+                detail.vote_average * 10
+              )}%, #242424 0 ${100 - Math.floor(detail.vote_average * 10)}%)`,
+            }}
+          ></span>
         </span>
         <div className="item-content-popular">
           <span className="item-content-posterRating-rating">
-            {detail.popularity}
+            {Math.floor(detail.popularity)}
             <span className="item-content-posterRating-rating-text">
               ratings
             </span>
           </span>
           <span className="item-content-posterRating-review">
-            {detail.vote_count}
+            {Math.floor(detail.vote_count)}
             <span className="item-content-posterRating-review-text">
               reviews
             </span>
