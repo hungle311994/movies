@@ -17,17 +17,21 @@ import { HiStar } from "react-icons/hi";
 
 const Row = ({ list, title, path }) => {
   const dispatch = useDispatch();
+
   const handleMovies = (item) => {
-    // Movies
-    dispatch(actionGetMoviesDetailListAPI(item.id));
-    dispatch(actionGetSimilarMoviesAPI(item.id));
-    dispatch(actionMoviesCreditsAPI(item.id));
-    dispatch(actionMoviesVideosAPI(item.id));
-    // TV
-    dispatch(actionGetTVDetailListAPI(item.id));
-    dispatch(actionGetSimilarTVAPI(item.id));
-    dispatch(actionTVCreditsAPI(item.id));
-    dispatch(actionTVVideosAPI(item.id));
+    console.log("item", item);
+    if (item.media_type === "movie") {
+      dispatch(actionGetMoviesDetailListAPI(item.id));
+      dispatch(actionGetSimilarMoviesAPI(item.id));
+      dispatch(actionMoviesCreditsAPI(item.id));
+      dispatch(actionMoviesVideosAPI(item.id));
+    }
+    if (item.media_type === "tv") {
+      dispatch(actionGetTVDetailListAPI(item.id));
+      dispatch(actionGetSimilarTVAPI(item.id));
+      dispatch(actionTVCreditsAPI(item.id));
+      dispatch(actionTVVideosAPI(item.id));
+    }
   };
 
   return (
