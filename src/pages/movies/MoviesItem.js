@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineLink } from "react-icons/hi";
 import { useSelector } from "react-redux";
-import Row from "../../components/row/Row";
-import { ToastContainer, toast } from "react-toastify";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import Reviews from "../../components/reviews/Reviews";
-import Trailer from "../../components/trailer/Trailer";
+import { toast, ToastContainer } from "react-toastify";
 import Credits from "../../components/credits/Credits";
-import TableDetail from "../../components/table-detail-desc/TableDetail";
 import PosterRating from "../../components/poster-rating/PosterRating";
+import Reviews from "../../components/reviews/Reviews";
+import Row from "../../components/row/Row";
+import TableDetail from "../../components/table-detail-desc/TableDetail";
+import Trailer from "../../components/trailer/Trailer";
 
 const MoviesItem = () => {
   const state = useSelector((state) => state);
